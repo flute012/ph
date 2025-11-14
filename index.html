@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <title>酸與鹼的挑戰｜酸鹼反應的化學奇遇記</title>
+  <link rel="stylesheet" href="./code/style.css" />
+
+  <!-- MathJax for LaTeX rendering -->
+  <script>
+    window.MathJax = {
+      tex: {
+        inlineMath: [['\\(', '\\)'], ['$', '$']],
+        displayMath: [['\\[', '\\]'], ['$$', '$$']]
+      },
+      svg: { fontCache: 'global' }
+    };
+  </script>
+  <script async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+</head>
+
+<body>
+  <div id="app">
+    <!-- 主標題區 -->
+    <header>
+      <h1>酸與鹼的挑戰</h1>
+      <p>酸鹼反應的化學奇遇記</p>
+    </header>
+
+    <!-- 主頁按鈕：田字排列 -->
+    <main class="menu-grid">
+      <button class="menu-btn B" onclick="window.location='ph_value.html'">🧪 量測 pH 值</button>
+      <button class="menu-btn A" onclick="window.location='Acid-Base.html'">🌈 酸鹼指示劑的檢測</button>
+      <button class="menu-btn C">🧉 酸鹼中和的應用</button>
+      <button class="menu-btn D">🧠 知識王</button>
+    </main>
+
+    <!-- 彈出視窗：基礎知識 -->
+    <div v-if="showModal" class="modal">
+      <div class="modal-content">
+        <button class="close-btn" @click="closeModal">✕</button>
+        <h2>基礎知識</h2>
+
+        <section class="topic topic-1">
+          <h2>酸與鹼的定義</h2>
+          <p>酸與鹼在化學中各自有明確的定義。</p>
+          <p>阿瑞尼斯（Arrhenius）定義：</p>
+          <p>酸可解離出氫離子：</p>
+          <p>\( \mathrm{HCl(aq) \rightarrow H^+(aq) + Cl^-(aq)} \)</p>
+          <p>鹼可解離出氫氧根離子：</p>
+          <p>\( \mathrm{NaOH(aq) \rightarrow Na^+(aq) + OH^-(aq)} \)</p>
+        </section>
+
+        <section class="topic topic-2">
+          <h2>pH 值概念</h2>
+          <p>pH 定義：\( \mathrm{pH = -\log[H^+]} \)，
+             \( \mathrm{pOH = -\log[OH^-]} \)。</p>
+          <p>水溶液同時含 \( \mathrm{H^+} \) 與 \( \mathrm{OH^-} \)，其濃度關係決定酸鹼性：</p>
+          <p>當 \( [\mathrm{H^+}] &gt; [\mathrm{OH^-}] \) 為酸性；反之為鹼性。</p>
+        </section>
+
+        <section class="topic topic-3">
+          <h2>檢測工具與中和反應</h2>
+          <p>常用檢測工具：石蕊試紙、廣用試紙、各類酸鹼指示劑；精確量測可用 pH 計。</p>
+          <p>酸鹼中和：酸 + 鹼 → 鹽 + 水，例如：</p>
+          <p>\( \mathrm{HCl(aq) + NaOH(aq) \rightarrow NaCl(aq) + H_2O(l)} \)</p>
+        </section>
+      </div>
+    </div>
+  </div>
+
+  <!-- Vue + Main Script -->
+  <script src="https://unpkg.com/vue@3.4.15/dist/vue.global.prod.js"></script>
+  <script src="./code/main.js"></script>
+</body>
+</html>

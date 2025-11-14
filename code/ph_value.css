@@ -1,0 +1,277 @@
+/* ph_value.html 專用排版 */
+
+.ph-tag {
+  padding: 0.3rem 1rem;
+  border-radius: 999px;
+  background: #fafbff;
+  color: #4c51bf;
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+.ph-title {
+  font-size: 1.9rem;
+  margin: 0.2rem 0 0.4rem;
+}
+
+.ph-subtitle {
+  font-size: 0.95rem;
+  color: #555;
+}
+
+.ph-layout {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 0 1rem 1rem;
+  display: flex;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+  background: radial-gradient(ellipse at center,  rgba(250, 251, 255, 1) 0%, rgba(255, 255, 255, 0.9) 100%);
+  border-radius: 1.5rem;
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px); 
+  border: 12px solid rgba(255, 255, 255, 0.15); 
+}
+
+
+.ph-layout:after{
+  content: "";
+
+}
+
+.control-panel {
+  text-align: center;
+}
+
+.control-panel,
+.visual-panel {
+  flex: 1 1 280px;
+}
+
+.panel-title {
+  font-size: 1.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.sample-select-row {
+  display: flex;
+  flex-direction: column; 
+  align-items: center; 
+  gap: 0.8rem;
+  flex-wrap: wrap;
+  margin-bottom: 0.8rem;
+}
+
+.select-wrapper select {
+  padding: 0.4rem 0.6rem;
+  font-size: 1.3rem;
+  border-radius: 0.6rem;
+  border: 1px solid #cbd5e0;
+  min-width: 180px;
+  margin: 0 auto; 
+}
+
+.sample-icon {
+  display: flex;
+  flex-direction: column; 
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.9rem;
+  margin: 1.2rem auto;
+
+}
+
+.sample-icon img {
+  width: 9em;
+  height: 9em;
+  object-fit: contain;
+}
+
+/* 重置按鈕 */
+.reset-btn {
+  margin-top: 0.2rem;
+  margin-bottom: 1rem;
+  padding: 0.4rem 2.5rem;
+  font-size: 1.4rem;
+  border-radius: 1.5rem;
+  border: none;
+  background: #81bffd;
+  cursor: pointer;
+  border: 0.5px solid rgb(166, 221, 247) 
+  
+}
+
+.reset-btn:hover {
+  background: #ceedffc4;
+  border: 0.5px solid #f6fdff;
+}
+
+/* pH 計外觀 */
+.meter-panel {
+  margin-top: 0.8rem;
+}
+
+.ph-meter {
+  display: flex;
+  justify-content: flex-start;
+}
+
+.meter-body {
+  width: 150px;
+  height: 90px;
+  border-radius: 1rem;
+  background: linear-gradient(135deg, #f7fafc, #edf2f7);
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.15);
+  position: relative;
+  padding: 0.5rem 0.8rem;
+}
+
+.meter-head {
+  position: absolute;
+  top: -6px;
+  left: 30%;
+  width: 40%;
+  height: 6px;
+  border-radius: 999px;
+  background: #cbd5e0;
+}
+
+.meter-screen {
+  margin-top: 0.6rem;
+  border-radius: 0.6rem;
+  background: #111827;
+  color: #e5f9ff;
+  padding: 0.3rem 0.5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+}
+
+.meter-label {
+  font-size: 0.85rem;
+  opacity: 0.8;
+}
+
+.meter-value {
+  font-family: "Roboto Mono", monospace;
+  font-size: 1.4rem;
+}
+
+.meter-foot {
+  position: absolute;
+  bottom: 0.4rem;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 32px;
+  height: 6px;
+  border-radius: 999px;
+  background: #cbd5e0;
+}
+
+/* 燒杯 SVG */
+.beaker-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.beaker-svg {
+  width: 100%;
+  max-width: 280px;
+}
+
+#phText {
+  font-size: 20em;
+  fill: #f8fafc;
+  font-family: 'Roboto Mono', 'Noto Sans TC', monospace;
+  text-anchor: middle;
+  dominant-baseline: middle;
+}
+
+/* 廣用試紙刻度 */
+.indicator-section {
+  max-width: 1000px;
+  margin: 0 auto 2rem;
+  padding: 0 1rem;
+}
+
+.indicator-note {
+  font-size: 1rem;
+  color: #555;
+  margin-bottom: 0.4rem;
+  padding-bottom: 1.5rem;
+}
+
+.indicator-bar {
+  position: relative;
+  margin-top: 0.4rem;
+}
+
+.indicator-scale {
+  display: grid;
+  grid-template-columns: repeat(14, 1fr);
+  gap: 2px;
+  padding: 3px;
+  border-radius: 0.6rem;
+}
+
+.indicator-cell {
+  height: 4rem;
+  border-radius: 0.35rem;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  font-size: 1rem;
+  font-weight:bold;
+  color: #f5f5f5;
+  text-shadow: 0 0 3px rgba(0,0,0,0.4);
+  opacity: 0.9;
+  padding-bottom: 0.5rem;
+}
+
+.indicator-cell.active {
+  outline: 2px solid #2d3748;
+  opacity: 1;
+}
+
+/* 指針 */
+.indicator-pointer {
+  position: absolute;
+  top: -24px;
+  width: 70px;
+  transform: translateX(-50%);
+  transition: left 0.25s ease;
+  opacity: 0;
+}
+
+.pointer-arrow {
+  width: 0;
+  height: 0;
+  margin: 0 auto;
+  border-left: 8px solid transparent;
+  border-right: 8px solid transparent;
+  border-top: 10px solid #2d3748;
+}
+
+.pointer-label {
+  margin-top: 2px;
+  background: #2d3748;
+  color: #f7fafc;
+  font-size: 0.75rem;
+  padding: 0.15rem 0.4rem;
+  border-radius: 999px;
+  text-align: center;
+}
+
+/* 手機排版 */
+@media (max-width: 640px) {
+  .ph-layout {
+    flex-direction: column;
+  }
+
+  .indicator-cell {
+    height: 3rem;
+    font-size: 0.8rem;
+    padding-bottom: 0.4rem;
+  }
+}

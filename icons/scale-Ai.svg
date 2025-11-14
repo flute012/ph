@@ -1,0 +1,79 @@
+<svg xmlns="http://www.w3.org/2000/svg" id="scale" viewBox="0 0 1140.2 173">
+  <defs>
+    <!-- ✅ 1. 把原本的 stop 全部拿掉，變成「空殼漸層」 -->
+    <linearGradient id="colorBand" x1="5.1" x2="1135.1" y1="91.5" y2="91.5"
+      gradientTransform="matrix(1 0 0 -1 0 140)" gradientUnits="userSpaceOnUse">
+      <!-- stops 之後用 JS 動態塞進來 -->
+    </linearGradient>
+
+    <style>
+      .st0{letter-spacing:0}.st0,.st2,.st3,.st4,.st8{isolation:isolate}.st0,.st2,.st4,.st8{fill:#262626;font-family:DFYanKai-W7-HK-BF,DFYanKaiW7-B5;font-size:28px}.st2,.st4{letter-spacing:0}.st11{fill:#c9c7c7}
+    </style>
+  </defs>
+
+  <!-- 略：數字 0~14 的標示，完全照你原本的保留 -->
+  <g id="_x30_" class="st3">
+    <text class="st8" transform="translate(2 134.5)"><tspan x="0" y="0">0</tspan></text>
+  </g>
+  <g id="_x31_" class="st3">
+    <text class="st8" transform="translate(82.2 134.5)"><tspan x="0" y="0">1</tspan></text>
+  </g>
+  <g id="_x32_" class="st3">
+    <text class="st8" transform="translate(162.3 134.5)"><tspan x="0" y="0">2</tspan></text>
+  </g>
+  <g id="_x33_" class="st3">
+    <text class="st8" transform="translate(242.5 134.5)"><tspan x="0" y="0">3</tspan></text>
+  </g>
+  <g id="_x34_" class="st3">
+    <text class="st8" transform="translate(322.6 134.5)"><tspan x="0" y="0">4</tspan></text>
+  </g>
+  <g id="_x35_" class="st3">
+    <text class="st8" transform="translate(402.8 134.5)"><tspan x="0" y="0">5</tspan></text>
+  </g>
+  <g id="_x36_" class="st3">
+    <text class="st8" transform="translate(482.9 134.5)"><tspan x="0" y="0">6</tspan></text>
+  </g>
+  <g id="_x37_" class="st3">
+    <text class="st8" transform="translate(563.1 134.5)"><tspan x="0" y="0">7</tspan></text>
+  </g>
+  <g id="_x38_" class="st3">
+    <text class="st8" transform="translate(643.2 134.5)"><tspan x="0" y="0">8</tspan></text>
+  </g>
+  <g id="_x39_" class="st3">
+    <text class="st8" transform="translate(723.4 134.5)"><tspan x="0" y="0">9</tspan></text>
+  </g>
+  <g id="_x31_0" class="st3">
+    <text class="st0" transform="translate(796.8 134.5)"><tspan x="0" y="0">1</tspan></text>
+    <text class="st4" transform="translate(808.2 134.5)"><tspan x="0" y="0">0</tspan></text>
+  </g>
+  <g id="_x31_1" class="st3">
+    <text style="isolation:isolate;fill:#262626;font-family:DFYanKai-W7-HK-BF,DFYanKaiW7-B5;font-size:28px;letter-spacing:-.1em" transform="translate(876.4 134.5)"><tspan x="0" y="0">1</tspan></text>
+    <text style="isolation:isolate;fill:#262626;font-family:DFYanKai-W7-HK-BF,DFYanKaiW7-B5;font-size:28px;letter-spacing:0" transform="translate(886.8 134.5)"><tspan x="0" y="0">1</tspan></text>
+  </g>
+  <g id="_x31_2" class="st3">
+    <text class="st2" transform="translate(955.1 134.5)"><tspan x="0" y="0">1</tspan></text>
+    <text class="st4" transform="translate(966.4 134.5)"><tspan x="0" y="0">2</tspan></text>
+  </g>
+  <g id="_x31_3" class="st3">
+    <text class="st2" transform="translate(1034.3 134.5)"><tspan x="0" y="0">1</tspan></text>
+    <text style="isolation:isolate;fill:#262626;font-family:DFYanKai-W7-HK-BF,DFYanKaiW7-B5;font-size:28px;letter-spacing:0" transform="translate(1045.4 134.5)"><tspan x="0" y="0">3</tspan></text>
+  </g>
+  <g id="_x31_4" class="st3">
+    <text class="st0" transform="translate(1113.1 134.5)"><tspan x="0" y="0">1</tspan></text>
+    <text style="isolation:isolate;fill:#262626;font-family:DFYanKai-W7-HK-BF,DFYanKaiW7-B5;font-size:28px;letter-spacing:0" transform="translate(1124.7 134.5)"><tspan x="0" y="0">4</tspan></text>
+  </g>
+
+  <g id="scale1" data-name="scale">
+    <path id="color"
+      d="M53.6 0h1033c26.8 0 48.5 21.7 48.5 48.5S1113.4 97 1086.6 97H53.6C26.8 97 5.1 75.3 5.1 48.5S26.8 0 53.6 0"
+      style="fill:url(#colorBand)"/>
+
+    <path id="frame"
+      d="M1086.6 4c24.5 0 44.5 20 44.5 44.5s-20 44.5-44.5 44.5H53.6C29.1 93 9.1 73 9.1 48.5S29 4 53.6 4zm0-4H53.6C26.8 0 5.1 21.7 5.1 48.5S26.8 97 53.6 97h1033c26.8 0 48.5-21.7 48.5-48.5S1113.4 0 1086.6 0"
+      class="st11"/>
+  </g>
+
+  <path id="slider_bar" d="M5.1 155.7h1130v5.3H5.1z" class="st11"/>
+  <path id="pointer" d="m589.2 3.5-19.1 18.6L551 3.5z" class="st11"/>
+  <circle id="slider_button" cx="570.1" cy="158.4" r="10.9" style="fill:#f9f9f9;stroke:#a0a0a0;stroke-miterlimit:10;stroke-width:3px"/>
+</svg>

@@ -1,0 +1,483 @@
+/* 讓整頁文字回到左對齊 */
+body {
+  text-align: initial;
+}
+
+/* 回主頁按鈕 */
+.back-link {
+  text-decoration: none;
+  color: #2b6cb0;
+  font-size: 1.05rem;
+  background: #fafbff;
+  border-radius: 9rem;
+  padding: 0.3rem 1rem;
+  font-weight: 600;
+}
+
+
+/* Acid-Base 主體 layout */
+.ab-layout {
+  max-width: 1100px;
+  margin: 0 auto 1.5rem;
+  padding: 0 1rem 1rem;
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  gap: 1.2rem;
+  background: radial-gradient(ellipse at center, rgba(250, 251, 255, 1) 0%, rgba(255, 255, 255, 0.9) 100%);
+  border-radius: 1.5rem;
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 12px solid rgba(255, 255, 255, 0.15);
+}
+
+/* 共用 panel */
+.ab-panel {
+  background: rgba(255, 255, 255, 0.9);
+  border-radius: 1.2rem;
+  padding: 0.9rem 1rem;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  text-align: left;
+  margin-top: 1.1rem;
+}
+
+.panel-title {
+  font-size: 1.4rem;
+  margin-bottom: 0.4rem;
+  color: #1a202c;
+  font-weight: 600;
+}
+
+.ab-subtitle {
+  font-size: 0.9rem;
+  color: #555;
+  margin-bottom: 0.5rem;
+}
+
+.ab-tip {
+  font-size: 0.8rem;
+  color: #555;
+  margin-top: 0.4rem;
+}
+
+/* ===== 指示劑卡片 ===== */
+.ab-indicator-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+.indicator-card {
+  background: rgba(248, 249, 255, 0.98);
+  border-radius: 1rem;
+  border: 1px solid rgba(15, 23, 42, 0.08);
+  padding: 0.5rem 0.7rem;
+  display: flex;
+  flex-direction: column;
+  cursor: pointer;
+  transition: box-shadow 0.2s, transform 0.2s, background 0.2s;
+}
+
+.indicator-card:hover {
+  box-shadow: 0 4px 10px rgba(15, 23, 42, 0.18);
+  transform: translateY(-1px);
+}
+
+.indicator-card.expanded {
+  background: rgba(255, 255, 255, 0.99);
+}
+
+.indicator-summary {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.indicator-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 4px 10px;
+  border-radius: 999px;
+  border: none;
+  background: linear-gradient(135deg, rgba(191, 219, 254, 0.9), rgba(219, 234, 254, 0.75));
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: grab;
+}
+
+.indicator-card:active .indicator-chip {
+  cursor: grabbing;
+}
+
+.indicator-color-swatch {
+  width: 14px;
+  height: 14px;
+  border-radius: 999px;
+}
+
+/* 代表性色塊（簡化） */
+.indicator-color-swatch.thymol {
+  background: linear-gradient(90deg, #ee2d22, #ffd10a, #48c2f9);
+}
+.indicator-color-swatch.btb {
+  background: linear-gradient(90deg, #ffd10a, #3fa142, #48c2f9);
+}
+.indicator-color-swatch.mo {
+  background: linear-gradient(90deg, #fb6222, #ffd10a);
+}
+.indicator-color-swatch.mr {
+  background: linear-gradient(90deg, #fb6222, #75cc20);
+}
+.indicator-color-swatch.pp {
+  background: linear-gradient(90deg, #ffffff, #dd6da1);
+}
+.indicator-color-swatch.rc {
+  background: linear-gradient(90deg, #ee2d22, #ffd10a, #3fa142, #0086d4, #3e0576);
+}
+.indicator-color-swatch.bp {
+  background: linear-gradient(90deg, #fb6222, #ff8ad6, #3e0576, #0086d4, #0ee479);
+}
+
+.indicator-brief {
+  font-size: 0.8rem;
+  color: #555;
+  flex: 1;
+}
+
+.indicator-text {
+  font-size: 0.85rem;
+  color: #4a5568;
+  margin: 0.3rem 0 0;
+}
+
+/* 展開內容 */
+.indicator-detail {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.25s ease;
+}
+
+.indicator-card.expanded .indicator-detail {
+  max-height: 260px;
+  margin-top: 0.35rem;
+}
+
+.indicator-scale-wrap {
+  margin-bottom: 0.3rem;
+}
+
+.indicator-scale {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* 待測液體 */
+.ab-liquid-panel {
+  padding-top: 0.7rem;
+}
+
+.ab-liquid-row {
+  display: flex;
+  gap: 1rem;
+  align-items: flex-start;
+}
+
+.ab-column {
+  flex: 1;
+  text-align: center;
+}
+
+.sub-title {
+  font-size: 1rem;
+  margin-bottom: 0.3rem;
+  color: #2d3748;
+  font-weight: 600;
+}
+
+.sample-icon img {
+  width: 7.5em;
+  height: 7.5em;
+  object-fit: contain;
+}
+
+.select-wrapper select {
+  padding: 0.4rem 0.6rem;
+  font-size: 1rem;
+  border-radius: 0.6rem;
+  border: 1px solid #cbd5e0;
+  min-width: 170px;
+}
+
+.ab-pot-svg {
+  width: 7.5em;
+  height: auto;
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.7);
+  margin-bottom: 0.4rem;
+}
+
+.ab-unknown-controls {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  align-items: center;
+}
+
+.ab-dice-btn {
+  padding: 0.4rem 1rem;
+  border-radius: 999px;
+  border: none;
+  background: linear-gradient(135deg, #ffb347, #ffcc33);
+  color: #222;
+  font-size: 0.9rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+
+.ab-dice-btn:hover {
+  transform: scale(1.05);
+}
+
+.ab-slider-label {
+  font-size: 0.85rem;
+  color: #4a5568;
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+}
+
+#ph-slider {
+  width: 120px;
+}
+
+#ph-slider-value {
+  font-weight: 600;
+  color: #2d3748;
+}
+
+/* 右側：燒杯 drop 區 */
+.ab-beaker-drop-zone {
+  border-radius: 1rem;
+  border: 2px dashed rgba(148, 163, 184, 0.7);
+  padding: 0.4rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 260px;
+}
+
+.ab-beaker-drop-zone.drag-over {
+  border-style: solid;
+  background: rgba(219, 234, 254, 0.45);
+}
+
+/* 燒杯 SVG 容器  */
+.ab-beaker-wrapper,
+.beaker-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  max-width: 400px;
+  margin: 0 auto;
+  position: relative;
+}
+
+.beaker-svg {
+  width: 100%;
+  max-width: 350px;
+  height: auto;
+}
+
+/* ===== 膠囊標示：顯示當前指示劑和液體 ===== */
+.solution-label {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: linear-gradient(135deg, rgba(191, 219, 254, 0.95), rgba(219, 234, 254, 0.95));
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border-radius: 999px;
+  padding: 0.5rem 1rem;
+  box-shadow:
+    0 4px 6px rgba(59, 130, 246, 0.15),
+    0 0 0 1px rgba(255, 255, 255, 0.6) inset;
+  display: flex;
+  gap: 0.8rem;
+  min-width: 140px;
+  transition: all 0.3s ease;
+  align-items: center;
+}
+
+.solution-label:hover {
+  transform: translateY(-2px);
+  box-shadow:
+    0 6px 12px rgba(59, 130, 246, 0.2),
+    0 0 0 1px rgba(255, 255, 255, 0.8) inset;
+}
+
+.solution-label-row {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.8rem;
+}
+
+.solution-label-icon {
+  font-size: 0.9rem;
+  opacity: 0.8;
+}
+
+.solution-label-title {
+  font-weight: 600;
+  color: #1e40af;
+  opacity: 0.7;
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.solution-label-value {
+  color: #1e3a8a;
+  font-weight: 600;
+  font-size: 0.85rem;
+}
+
+.solution-label-empty {
+  color: #64748b;
+  font-style: italic;
+  font-size: 0.8rem;
+}
+
+/* pH 文字樣式（保底一份） */
+#phText {
+  font-size: 260px;
+  fill: #f8fafc;
+  font-family: 'Roboto Mono', 'Noto Sans TC', monospace;
+  text-anchor: middle;
+  dominant-baseline: middle;
+}
+
+/* 液面動畫 */
+@keyframes liquid-bump {
+  0% { transform: scale(1); }
+  25% { transform: scale(1.04); }
+  100% { transform: scale(1); }
+}
+
+#beaker-svg-root #liquid {
+  transform-origin: center bottom;
+}
+
+.ab-liquid-bump {
+  animation: liquid-bump 0.35s ease-out;
+}
+
+/* 廣用試紙色帶 SVG */
+.ab-scale-svg {
+  width: 100%;
+  max-width: 520px;
+  height: auto;
+  display: block;
+  margin: 0.2rem auto 0;
+}
+
+/* 重置按鈕 */
+.ab-reset-btn {
+  width: 100%;
+  padding: 0.6rem 1rem;
+  border-radius: 999px;
+  border: none;
+  background: linear-gradient(135deg, #3fc1c9, #36a9e0);
+  color: #fff;
+  font-size: 1rem;
+  font-weight: 700;
+  cursor: pointer;
+  box-shadow: 0 3px 8px rgba(0,0,0,0.2);
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.ab-reset-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 5px 12px rgba(0,0,0,0.25);
+}
+
+/* ===== 說明彈窗 ===== */
+.ab-help-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(15, 23, 42, 0.45);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+}
+
+.ab-help-modal {
+  max-width: 460px;
+  width: 90%;
+  background: rgba(255, 255, 255, 0.98);
+  border-radius: 1.1rem;
+  padding: 1.1rem 1.2rem;
+  box-shadow: 0 18px 40px rgba(15, 23, 42, 0.35);
+  text-align: left;
+}
+
+.ab-help-modal h2 {
+  margin-top: 0;
+  margin-bottom: 0.6rem;
+  color: #1a202c;
+}
+
+.ab-help-modal ol {
+  padding-left: 1.2rem;
+  margin: 0 0 0.9rem;
+  font-size: 1rem;
+  color: #4a5568;
+  line-height:1.9rem;
+}
+
+.ab-help-close-btn {
+  display: inline-block;
+  border: none;
+  border-radius: 999px;
+  padding: 0.4rem 0.9rem;
+  background: linear-gradient(135deg, #3fc1c9, #36a9e0);
+  color: #fff;
+  font-weight: 700;
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+
+.ab-help-close-btn:hover {
+  transform: scale(1.05);
+}
+
+/* 手機版簡化排版 */
+@media (max-width: 768px) {
+  .ab-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .ab-liquid-row {
+    flex-direction: column;
+  }
+
+  .beaker-svg {
+    max-width: 280px;
+  }
+
+  .panel-title {
+    font-size: 1.2rem;
+  }
+
+}
+
+/* 平板優化 */
+@media (max-width: 1024px) and (min-width: 769px) {
+  .ab-layout {
+    grid-template-columns: 1fr;
+  }
+}

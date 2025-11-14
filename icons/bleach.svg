@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="_圖層_2" data-name="圖層 2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 81.32 182.24">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: #39bef7;
+      }
+
+      .cls-1, .cls-2, .cls-3, .cls-4 {
+        fill-rule: evenodd;
+      }
+
+      .cls-5 {
+        fill: #fff;
+      }
+
+      .cls-6 {
+        fill: #262626;
+        font-family: DFPOP1-W5-HKP-BF, DFPPOP1W5-B5;
+        font-size: 16.71px;
+        stroke: #020202;
+        stroke-width: .5px;
+      }
+
+      .cls-6, .cls-2, .cls-4 {
+        stroke-miterlimit: 10;
+      }
+
+      .cls-2 {
+        stroke: #ed6969;
+      }
+
+      .cls-2, .cls-4 {
+        fill: none;
+        stroke-width: 3px;
+      }
+
+      .cls-7, .cls-3 {
+        fill: #ffc466;
+      }
+
+      .cls-8 {
+        fill: #f0b24d;
+      }
+
+      .cls-4 {
+        stroke: #9cf1ff;
+      }
+    </style>
+  </defs>
+  <g id="OBJECTS">
+    <g>
+      <g>
+        <path class="cls-1" d="M40.66,25.51c22.46,0,40.66,43.51,40.66,97.18,0,19.2-2.33,37.1-6.35,52.17-1.2,4.49-4.32,7.37-7.99,7.37H14.34c-3.67,0-6.79-2.88-7.99-7.37-4.02-15.07-6.35-32.97-6.35-52.17C0,69.02,18.2,25.51,40.66,25.51Z"/>
+        <rect class="cls-7" x="23.8" y="0" width="33.72" height="25.51" rx="4.76" ry="4.76"/>
+        <path class="cls-3" d="M24.21,18.26h32.89c1.61,0,2.94,1.32,2.94,2.94v16.05H21.28v-16.05c0-1.61,1.32-2.93,2.93-2.93Z"/>
+      </g>
+      <rect class="cls-8" x="23.8" y="14.75" width="33.72" height="3.51"/>
+      <g>
+        <rect class="cls-5" x="13.77" y="100" width="53.78" height="69.24"/>
+        <rect class="cls-5" x="13.77" y="73.43" width="53.78" height="69.24" rx="26.89" ry="26.89"/>
+      </g>
+      <g>
+        <polygon class="cls-2" points="49.22 121.1 28.08 125.85 20.44 141.28 33.95 151.97 55.09 147.22 62.73 131.79 49.22 121.1"/>
+        <polygon class="cls-4" points="46.56 121.7 25.42 126.45 17.78 141.88 31.29 152.57 52.43 147.82 60.06 132.39 46.56 121.7"/>
+        <text class="cls-6" transform="translate(17.78 140.18)"><tspan x="0" y="0">NaClO</tspan></text>
+      </g>
+    </g>
+  </g>
+</svg>

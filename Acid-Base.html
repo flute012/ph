@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8" />
+  <title>🌈 酸鹼指示劑的檢測</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <link rel="stylesheet" href="./code/style.css" />
+  <link rel="stylesheet" href="./code/acid-base.css" />
+</head>
+<body>
+    <!-- 🔹 頂端導覽 -->
+    <header class="ph-header">
+      <div class="ph-header-top">
+        <a href="index.html" class="back-link">🏠 回主頁</a>
+        <div class="ph-header-right">
+          <a href="ph_value.html" class="ph-nav-item">🧪 量測 pH 值</a>
+          <a href="Acid-Base.html" class="ph-nav-item ph-nav-item--active">🌈 指示劑檢測</a>
+          <a href="ABNeut.html" class="ph-nav-item">🧉 酸鹼中和</a>
+          <a href="Knowledge.html" class="ph-nav-item">🧠 知識王</a>
+        </div>
+      </div>
+      <h1 class="ph-title">🌈 酸鹼指示劑的檢測</h1>
+      <p class="ph-subtitle">
+        選擇指示劑與待測液體，搭配 pH 計與廣用試紙，觀察顏色與數值的變化。
+      </p>
+    </header>
+    <!-- 🔸 操作說明彈窗 -->
+    <div id="ab-help-overlay" class="ab-help-overlay">
+      <div class="ab-help-modal">
+        <h2>如何操作這個頁面？</h2>
+        <ol>
+          <li>拖曳左側「酸鹼指示劑」的名稱標籤🔖，加入少量指示劑到右側燒杯🥛中。</li>
+          <li>點擊任一「酸鹼指示劑」即可展開查看指示劑pH值的顯示色帶。</li>
+          <li>選擇一種「待測液體」，或使用右側的「未知溶液」拉條／骰子🎲決定 pH 值。</li>
+          <li>當燒杯裡的液體會依據「指示劑＋液體」的 pH 值改變顏色。</li>
+          <li>可以點擊[重置]🔁，回到預設值</li>
+          
+        </ol>
+        <button id="ab-help-close" type="button" class="ab-help-close-btn">
+          了解
+        </button>
+      </div>
+    </div>
+
+    <main class="ab-layout">
+      <!-- 左側：指示劑 + 待測液體 / 未知溶液 -->
+      <section class="ab-left">
+
+        <!-- 1. 指示劑區：7 個可展開膠囊卡片 -->
+        <section class="ab-panel ab-indicator-panel">
+          <h2 class="panel-title">1. 選擇酸鹼指示劑</h2>
+
+          <div class="ab-indicator-list">
+            <!-- 瑞香草酚藍 -->
+            <article class="indicator-card" data-indicator-key="thymolBlue">
+              <header class="indicator-summary">
+                <button class="indicator-chip" type="button">
+                  <span class="indicator-color-swatch thymol"></span>
+                  <span class="indicator-name">瑞香草酚藍 Thymol Blue</span>
+                </button>
+                <span class="indicator-brief">pH 1.2～2.8：洋紅→黃；8.2～9.7：黃→藍</span>
+              </header>
+              <div class="indicator-detail">
+                <div class="indicator-scale-wrap">
+                  <!-- JS 會改裡面的 colorBand + pointer -->
+                  <object class="indicator-scale"
+                          type="image/svg+xml"
+                          data="icons/scale-Ai.svg"></object>
+                </div>
+                <p class="indicator-text">
+                  酸性時呈洋紅色，中性附近變為黃色，強鹼時轉為藍色。
+                </p>
+              </div>
+            </article>
+
+            <!-- 溴瑞香草酚藍 -->
+            <article class="indicator-card" data-indicator-key="bromothymolBlue">
+              <header class="indicator-summary">
+                <button class="indicator-chip" type="button">
+                  <span class="indicator-color-swatch btb"></span>
+                  <span class="indicator-name">溴瑞香草酚藍 Bromothymol Blue</span>
+                </button>
+                <span class="indicator-brief">pH 6.0～7.6：黃→藍</span>
+              </header>
+              <div class="indicator-detail">
+                <div class="indicator-scale-wrap">
+                  <object class="indicator-scale"
+                          type="image/svg+xml"
+                          data="icons/scale-Ai.svg"></object>
+                </div>
+                <p class="indicator-text">
+                  弱酸時偏黃，中性附近轉綠，弱鹼時變成藍色。
+                </p>
+              </div>
+            </article>
+
+            <!-- 甲基橙 -->
+            <article class="indicator-card" data-indicator-key="methylOrange">
+              <header class="indicator-summary">
+                <button class="indicator-chip" type="button">
+                  <span class="indicator-color-swatch mo"></span>
+                  <span class="indicator-name">甲基橙 Methyl Orange</span>
+                </button>
+                <span class="indicator-brief">pH 3.2～4.4：橘紅色→黃</span>
+              </header>
+              <div class="indicator-detail">
+                <div class="indicator-scale-wrap">
+                  <object class="indicator-scale"
+                          type="image/svg+xml"
+                          data="icons/scale-Ai.svg"></object>
+                </div>
+                <p class="indicator-text">
+                  強酸時呈橘紅色，接近中性時變成黃色。
+                </p>
+              </div>
+            </article>
+
+            <!-- 甲基紅 -->
+            <article class="indicator-card" data-indicator-key="methylRed">
+              <header class="indicator-summary">
+                <button class="indicator-chip" type="button">
+                  <span class="indicator-color-swatch mr"></span>
+                  <span class="indicator-name">甲基紅 Methyl Red</span>
+                </button>
+                <span class="indicator-brief">pH 4.8–6.0：由黃色→黃綠色</span>
+              </header>
+              <div class="indicator-detail">
+                <div class="indicator-scale-wrap">
+                  <object class="indicator-scale"
+                          type="image/svg+xml"
+                          data="icons/scale-Ai.svg"></object>
+                </div>
+                <p class="indicator-text">
+                  酸性時偏紅橙，接近中性時變為黃綠色。
+                </p>
+              </div>
+            </article>
+
+            <!-- 酚酞 -->
+            <article class="indicator-card" data-indicator-key="phenolphthalein">
+              <header class="indicator-summary">
+                <button class="indicator-chip" type="button">
+                  <span class="indicator-color-swatch pp"></span>
+                  <span class="indicator-name">酚酞 Phenolphthalein</span>
+                </button>
+                <span class="indicator-brief">pH 8.2～10.0：無色→粉紅</span>
+              </header>
+              <div class="indicator-detail">
+                <div class="indicator-scale-wrap">
+                  <object class="indicator-scale"
+                          type="image/svg+xml"
+                          data="icons/scale-Ai.svg"></object>
+                </div>
+                <p class="indicator-text">
+                  酸性到中性時幾乎無色，強鹼時會顯出粉紅色。
+                </p>
+              </div>
+            </article>
+
+            <!-- 紫甘藍汁 -->
+            <article class="indicator-card" data-indicator-key="redCabbage">
+              <header class="indicator-summary">
+                <button class="indicator-chip" type="button">
+                  <span class="indicator-color-swatch rc"></span>
+                  <span class="indicator-name">紫甘藍汁 Red Cabbage</span>
+                </button>
+                <span class="indicator-brief">pH 2～12：紅→紫→綠藍</span>
+              </header>
+              <div class="indicator-detail">
+                <div class="indicator-scale-wrap">
+                  <object class="indicator-scale"
+                          type="image/svg+xml"
+                          data="icons/scale-Ai.svg"></object>
+                </div>
+                <p class="indicator-text">
+                  強酸呈紅色，中性附近偏紫，鹼性時轉為藍綠色。
+                </p>
+              </div>
+            </article>
+
+            <!-- 蝶豆花 -->
+            <article class="indicator-card" data-indicator-key="butterflyPea">
+              <header class="indicator-summary">
+                <button class="indicator-chip" type="button">
+                  <span class="indicator-color-swatch bp"></span>
+                  <span class="indicator-name">蝶豆花 Butterfly Pea</span>
+                </button>
+                <span class="indicator-brief">pH 3～11：粉紅→紫藍→藍綠</span>
+              </header>
+              <div class="indicator-detail">
+                <div class="indicator-scale-wrap">
+                  <object class="indicator-scale"
+                          type="image/svg+xml"
+                          data="icons/scale-Ai.svg"></object>
+                </div>
+                <p class="indicator-text">
+                  酸性時偏粉紅紫，中性偏深紫，鹼性時會變成藍綠色。
+                </p>
+              </div>
+            </article>
+          </div>
+        </section>
+
+        <!-- 2 & 3  -->
+        <section class="ab-panel ab-liquid-panel">
+          <h2 class="panel-title">2. 待測液體與未知溶液</h2>
+
+          <div class="ab-liquid-row">
+            <!-- 左：待測液體 -->
+            <div class="ab-column">
+              <h3 class="sub-title">待測液體</h3>
+              <div class="sample-icon">
+                <img id="testLiquidIcon"
+                     src="icons/Q.svg"
+                     alt="請選擇待測液體"
+                     draggable="true" />
+              </div>
+              <div class="select-wrapper">
+                <select id="testLiquidSelect">
+                  <option value="">請選擇待測液體</option>
+                  <option value="檸檬汁">檸檬汁</option>
+                  <option value="可樂">可樂</option>
+                  <option value="啤酒">啤酒</option>
+                  <option value="咖啡">咖啡</option>
+                  <option value="牛奶">牛奶</option>
+                  <option value="純水">純水</option>
+                  <option value="沐浴乳">沐浴乳</option>
+                  <option value="肥皂水">肥皂水</option>
+                  <option value="洗衣精">洗衣精</option>
+                  <option value="漂白水">漂白水</option>
+                  <option value="通樂">通樂</option>
+                </select>
+              </div>
+            </div>
+
+            <!-- 右：未知液體 -->
+            <div class="ab-column">
+              <h3 class="sub-title">神秘液體</h3>
+              <object id="pot-svg"
+                      class="ab-pot-svg"
+                      type="image/svg+xml"
+                      data="icons/pot.svg">
+                      神秘液體
+              </object>
+              <div class="ab-unknown-controls">
+                <button id="dice-btn" type="button" class="ab-dice-btn">🎲 隨機 pH</button>
+                <label class="ab-slider-label">
+                  pH：
+                  <input id="ph-slider" type="range" min="0" max="14" step="0.1" value="7" />
+                  <span id="ph-slider-value">7.0</span>
+                </label>
+              </div>
+            </div>
+          </div>
+        </section>
+      </section>
+
+      <!-- 右側：燒杯＋廣用試紙＋重置 -->
+      <section class="ab-right">
+        <section class="ab-panel ab-beaker-panel">
+          <h2 class="panel-title">3. 觀察燒杯中的變化</h2>
+          <div id="beaker-drop-zone" class="ab-beaker-drop-zone">
+            <div id="beaker-svg-root" class="ab-beaker-wrapper">
+              <div class="beaker-wrapper">
+                <!-- ✨ 膠囊標示：顯示當前指示劑和液體 -->
+                <div class="solution-label">
+                  <div class="solution-label-row">
+                    <span class="solution-label-icon">🧪</span>
+                    <div>
+                      <div class="solution-label-title">指示劑</div>
+                      <div id="solution-indicator-value" class="solution-label-empty">無</div>
+                    </div>
+                  </div>
+                  <div class="solution-label-row">
+                    <span class="solution-label-icon">💧</span>
+                    <div>
+                      <div class="solution-label-title">液體</div>
+                      <div id="solution-liquid-value" class="solution-label-value">純水</div>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- 🔬 pH 計 + 燒杯 SVG -->
+                <svg xmlns="http://www.w3.org/2000/svg"
+                     viewBox="0 0 3644.32 3600"
+                     class="beaker-svg">
+                  <defs>
+                    <style>
+                      .cls-2{fill:#51759c}.cls-5{fill:#141f28}.cls-11{fill:#e0f0ff}.cls-13{opacity:.4;fill:#fff}
+                    </style>
+                  </defs>
+                  <g style="isolation:isolate">
+                    <g data-name="beaker" id="beaker">
+                      <g id="instrument">
+                        <g id="pH_measuring">
+
+                          <path d="M2747.96 2080.18h-92.11V768.59c0-373.03-303.41-676.48-676.43-676.48h-199.61c-373.03 0-676.43 303.45-676.43 676.48v518.4h-92.12v-518.4C1011.26 344.78 1356.04 0 1779.81 0h199.61c423.76 0 768.54 344.78 768.54 768.59z" class="cls-2"/>
+                          <rect width="237.96" height="291.68" x="943.76" y="895.81" class="cls-11" rx=".65" ry=".65"/>
+                          <rect width="1504.47" height="2617.47" y="982.53" rx="1.37" ry="1.37" style="fill:#b0d9ff"/>
+                          <path d="M1421.29 3565.32H148.19c-63.9 0-115.69-51.79-115.69-115.69v-2386.1c0-21.78 7.64-41.01 18.11-58.41C20.76 1026.04-.01 1059-.01 1098.2v2386.11c0 63.9 51.78 115.69 115.68 115.69h1273.11c42.1 0 77.33-23.65 97.56-57.27-18.78 13.16-40.38 22.6-65.06 22.6Z" style="fill:#148eff;opacity:.2"/>
+                          <path d="M1388.79 982.53H115.68c-51.39 0-93.47 34.07-108.56 80.41 21.22-24.89 51.7-41.55 86.98-41.55h1273.11c63.89 0 115.68 51.79 115.68 115.68v2386.11c0 12.51-3.45 23.99-7.11 35.27 17.21-20.19 28.7-45.52 28.7-74.13V1098.21c0-63.89-51.79-115.68-115.68-115.68Z" class="cls-13"/>
+                          <rect width="1366.31" height="2486.99" x="69.08" y="1047.77" class="cls-11" rx="1.27" ry="1.27"/>
+                          <path d="M1327.92 1047.77H176.54c-44.57 0-82.77 27.15-99.05 65.8 16.18-9.75 34.06-16.87 54.32-16.87h1151.38c59.35 0 107.46 48.12 107.46 107.46v2272.06c0 14.78-3.02 28.85-8.41 41.65 31.19-18.8 53.14-51.5 53.14-90.58V1155.23c0-59.35-48.12-107.46-107.47-107.46Z" class="cls-13"/>
+                          <path d="M372.28 3221.31c-59.35 0-107.46-48.12-107.46-107.46V1047.77h-88.27c-59.35 0-107.46 48.12-107.46 107.46v2272.06c0 59.35 48.12 107.46 107.46 107.46h1151.37c59.36 0 107.47-48.11 107.47-107.46v-205.98z" style="mix-blend-mode:multiply;fill:#e0f0ff;opacity:.4"/>
+                          <rect width="1047.76" height="1381.66" x="183.62" y="1219.69" rx="1.29" ry="1.29" style="fill:#fff"/>
+                          <rect width="1047.76" height="1381.66" x="232.19" y="1174.42" class="cls-2" rx="1.29" ry="1.29"/>
+                          <path d="M1170.57 1174.42H341.58c-60.41 0-109.39 48.98-109.39 109.39v3.18h825.1c60.41 0 109.39 48.97 109.39 109.39v1159.71h3.89c60.41 0 109.39-48.97 109.39-109.39V1283.81c0-60.41-48.98-109.39-109.39-109.39" style="opacity:.2;fill:#1c2836"/>
+                          <path d="M232.19 1767.32v625.59c306.46-268.82 693.22-610.6 1047.76-924.66V1283.8c0-60.41-48.98-109.39-109.39-109.39H739.29l-507.11 592.91Zm1047.76 549.28v-279.29a2497172 2497172 0 0 1-786.98 518.77h331.19z" class="cls-11" style="opacity:.3"/>
+                          <path d="M1351.77 3492.49H200.38c-59.36 0-107.46-48.12-107.46-107.46V1112.97c0-11.33 3.19-21.7 6.45-31.96-18.57 19.32-30.3 45.32-30.3 74.23V3427.3c0 59.35 48.12 107.46 107.46 107.46H1327.9c48.02 0 87.23-32.04 101.02-75.48-19.56 20.33-46.74 33.23-77.17 33.23Z" class="cls-13"/>
+                          <path d="M875.58 2855.92H610.77c-50.08 0-90.68-40.6-90.68-90.67 0-50.08 40.6-90.67 90.68-90.67h264.81c50.08 0 90.68 40.59 90.68 90.67 0 50.07-40.6 90.67-90.68 90.67m0 254.58H610.77c-50.08 0-90.68-40.6-90.68-90.68 0-50.07 40.6-90.67 90.68-90.67h264.81c50.08 0 90.68 40.6 90.68 90.67 0 50.08-40.6 90.68-90.68 90.68m0 254.58H610.77c-50.08 0-90.68-40.6-90.68-90.67 0-50.08 40.6-90.68 90.68-90.68h264.81c50.08 0 90.68 40.6 90.68 90.68 0 50.07-40.6 90.67-90.68 90.67" class="cls-2"/>
+                          <path d="M2707.66 2951.39c-22.26 0-40.3-18.04-40.3-40.3V1874.74c0-22.26 18.04-40.3 40.3-40.3s40.3 18.04 40.3 40.3v1036.35c0 22.26-18.04 40.3-40.3 40.3" style="fill:#344a63"/>
+                          <path d="M943.76 960.9h237.96v22.39H943.76z" style="fill:#51759c;opacity:.4"/>
+                          <rect width="182.37" height="182.37" x="2616.47" y="1005.12" rx=".64" ry=".64" style="fill:#b1bec9"/>
+                          <rect width="195.74" height="1100.27" x="2609.79" y="1664.98" class="cls-2" rx=".95" ry=".95"/>
+                          <path d="M2765.36 2699.04h-34.8c-44.44 0-80.47-36.02-80.47-80.46v-939.34c0-.8.44-1.47.47-2.27-23.93 13.94-40.76 38.79-40.76 68.48v939.33c0 44.44 36.03 80.47 80.47 80.47h34.8c43.63 0 78.72-34.86 80-78.18-11.89 6.93-24.96 11.98-39.71 11.98Z" style="opacity:.2;fill:#090d12"/>
+                          <rect width="341.58" height="1124.52" x="2536.88" y="1081" class="cls-11" rx="1.27" ry="1.27"/>
+                          <path d="M2825.68 2052.96h-126.65c-59.36 0-107.46-48.12-107.46-107.46v-848.67c-32.1 18.58-54.7 51.88-54.7 91.63v909.59c0 59.35 48.12 107.46 107.46 107.46h126.66c59.35 0 107.46-48.12 107.46-107.46v-60.92c-15.82 9.16-33.18 15.83-52.78 15.83Z" style="opacity:.1;fill:#51759c"/>
+                        </g>
+                        <!-- 儀器螢幕區 -->
+                        <path id="screen" d="M279.18 1316.13h964.17V2424.3H279.18z" style="fill:#e0f0ff;opacity:.13"/>
+                        <!-- pH 數字 -->
+                        <text id="phText"
+                              x="760" y="1880"
+                              text-anchor="middle"
+                              font-size="260"
+                              font-family="Roboto Mono, system-ui, sans-serif"
+                              fill="#141f28">
+                          --
+                        </text>
+                      </g>
+                      <g id="cup">
+                        <path id="shap" d="M3639.16 1253.01c-38.14 64.64-89.12 131.99-89.12 350v1725.87c0 147.32-111.7 266.77-249.5 266.77H2111.18c-13.3 0-26.36-1.11-39.1-3.26-119.22-20.06-210.41-130.41-210.41-263.52V1610.65c0-118.7 29.2-216.76-135.89-216.76-35.81 0-43.18-38.22-26.1-58.25 72.11-84.51 145.44-124.67 313.57-124.67h1551.1c64.39 0 91.09 14.42 74.81 42.02Z" style="fill:#f7f7f7;opacity:.6;stroke:#494949;stroke-miterlimit:10"/>
+                        <path id="liquid" d="M3478.59 2307.88v994.95c0 119.34-79.88 216.43-178.05 216.43H2111.18c-98.17 0-178.05-97.09-178.05-216.43v-994.95z" style="fill:#6dc1b4;opacity:.7"/>
+                        <path id="Liquid_Shadow" d="M3478.59 2307.88v994.95c0 119.34-79.88 216.43-178.05 216.43h-62.51c98.17 0 178.05-97.09 178.05-216.43v-994.95z" data-name="Liquid Shadow" style="opacity:.3;mix-blend-mode:overlay"/>
+                        <path id="Liquid_bright_part" d="M1933.13 2307.88v994.95c0 119.34 79.88 216.43 178.05 216.43h62.51c-98.17 0-178.05-97.09-178.05-216.43v-994.95z" data-name="Liquid bright part" style="opacity:.3;fill:#fff;mix-blend-mode:overlay"/>
+                        <g id="scale" style="opacity:.8">
+                          <!-- 刻度原樣保留 -->
+                          <path d="M3346.55 1687.18h-279.64c-3.98 0-7.21-3.45-7.21-7.71s3.23-7.71 7.21-7.71h279.64c3.98 0 7.21 3.45 7.21 7.71s-3.23 7.71-7.21 7.71m0 143.03h-160.91c-3.98 0-7.21-3.45-7.21-7.71s3.23-7.71 7.21-7.71h160.91c3.98 0 7.21 3.45 7.21 7.71s-3.23 7.71-7.21 7.71" class="cls-5"/>
+                          <rect width="294.07" height="15.42" x="3059.69" y="1957.82" class="cls-5" rx="3.63" ry="3.63"/>
+                          <path d="M3346.55 2116.28h-160.91c-3.98 0-7.21-3.45-7.21-7.71s3.23-7.71 7.21-7.71h160.91c3.98 0 7.21 3.45 7.21 7.71s-3.23 7.71-7.21 7.71m0 143.03h-279.64c-3.98 0-7.21-3.45-7.21-7.71s3.23-7.71 7.21-7.71h279.64c3.98 0 7.21 3.45 7.21 7.71s-3.23 7.71-7.21 7.71m0 143.03h-160.91c-3.98 0-7.21-3.45-7.21-7.71s3.23-7.71 7.21-7.71h160.91c3.98 0 7.21 3.45 7.21 7.71s-3.23 7.71-7.21 7.71m0 143.03h-279.64c-3.98 0-7.21-3.45-7.21-7.71s3.23-7.71 7.21-7.71h279.64c3.98 0 7.21 3.45 7.21 7.71s-3.23 7.71-7.21 7.71m0 143.04h-160.91c-3.98 0-7.21-3.45-7.21-7.71s3.23-7.71 7.21-7.71h160.91c3.98 0 7.21 3.45 7.21 7.71s-3.23 7.71-7.21 7.71m0 143.03h-279.64c-3.98 0-7.21-3.45-7.21-7.71s3.23-7.71 7.21-7.71h279.64c3.98 0 7.21 3.45 7.21 7.71s-3.23 7.71-7.21 7.71m0 143.03h-160.91c-3.98 0-7.21-3.45-7.21-7.71s3.23-7.71 7.21-7.71h160.91c3.98 0 7.21 3.45 7.21 7.71s-3.23 7.71-7.21 7.71m0 143.04h-279.64c-3.98 0-7.21-3.45-7.21-7.71s3.23-7.71 7.21-7.71h279.64c3.98 0 7.21 3.45 7.21 7.71s-3.23 7.71-7.21 7.71m0 143.03h-160.91c-3.98 0-7.21-3.45-7.21-7.71s3.23-7.71 7.21-7.71h160.91c3.98 0 7.21 3.45 7.21 7.71s-3.23 7.71-7.21 7.71" class="cls-5"/>
+                        </g>
+                      </g>
+                    </g>
+                  </g>
+                </svg>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- <section class="ab-panel ab-scale-panel">
+          <h3 class="panel-title">   廣用試紙色帶（pH 1～14）比對參考</h3>
+          <object id="ph-scale-svg"
+                  class="ab-scale-svg"
+                  type="image/svg+xml"
+                  data="icons/scale-Ai.svg">
+            pH 色帶
+          </object>
+        </section> -->
+
+        <section class="ab-panel ab-reset-panel">
+          <button id="reset-btn" type="button" class="ab-reset-btn">🔄 重置全部</button>
+        </section>
+      </section>
+    </main>
+
+  <script src="./code/acid-base.js"></script>
+</body>
+</html>
