@@ -454,12 +454,67 @@ body {
 .ab-help-close-btn:hover {
   transform: scale(1.05);
 }
+/* [ +燒杯 ] 按鈕：桌機預設隱藏，只給手機用 */
+.indicator-add-btn {
+  display: none;
+  border: none;
+  border-radius: 999px;
+  padding: 0.2rem 0.7rem;
+  font-size: 0.8rem;
+  font-weight: 600;
+  background: linear-gradient(135deg, #3fc1c9, #36a9e0);
+  color: #fff;
+  cursor: pointer;
+  white-space: nowrap;
+}
 
-/* 手機版簡化排版 */
+/* 讓指示劑卡片在手機版變成「chip 置中、說明文字在下面換行」 */
 @media (max-width: 768px) {
+  .indicator-summary {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 0.3rem;
+  }
+
+  .indicator-chip {
+    justify-content: center;
+  }
+
+  .indicator-brief {
+    text-align: center;
+    max-width: 100%;
+  }
+
+  /* 手機時顯示 [ +燒杯 ] 按鈕 */
+  .indicator-add-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 0.1rem;
+  }
+
+  /* 待測液體 / 未知溶液 整塊置中對齊標題 */
+  .ab-liquid-panel .panel-title {
+    text-align: center;
+  }
+
+  .ab-liquid-row {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .ab-column {
+    text-align: center;
+  }
+  
   .ab-layout {
     grid-template-columns: 1fr;
-  }
+
+}
+
+
+
 
   .ab-liquid-row {
     flex-direction: column;

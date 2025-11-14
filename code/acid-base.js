@@ -103,6 +103,19 @@ const INDICATOR_DATA = {
   }
 };
 
+function applyIndicatorToBeaker(key) {
+  if (!INDICATOR_DATA[key]) return;
+  state.currentIndicatorKey = key;
+  state.hasIndicatorInBeaker = true;
+  updateBeakerLiquidColor();
+  triggerLiquidAnim();
+  updateSolutionLabel();
+}
+
+
+
+
+
 // ===== 顏色小工具 =====
 function hexToRgb(hex) {
   const clean = hex.replace('#', '');
@@ -535,29 +548,45 @@ document.addEventListener('DOMContentLoaded', () => {
       e.dataTransfer.effectAllowed = 'copy';
     });
   }
-
+  const isTouchDevice = ('ontouchstart' in window) || (navigator.maxTouchPoints > 0);
   // 指示劑卡：展開、雙擊、拖曳、scale-Ai 設色
   document.querySelectorAll('.indicator-card').forEach(card => {
     const key  = card.dataset.indicatorKey;
     const chip = card.querySelector('.indicator-chip');
+    const addBtn = card.querySelector('.indicator-add-btn');   // ⭐ 新增
+    let lastTapTime = 0;
 
-    // 點整張卡 → 展開/收合
+    // 點卡片：手機 double tap → 倒進燒杯，桌機單擊只展開
     card.addEventListener('click', (e) => {
-      if (e.detail === 0) return;
+      const now = Date.now();
+      const timeSinceLastTap = now - lastTapTime;
+      lastTapTime = now;
+
+      if (isTouchDevice && timeSinceLastTap < 400) {
+        e.preventDefault();
+        applyIndicatorToBeaker(key);
+        return;
+      }
+
       card.classList.toggle('expanded');
     });
 
-    // 雙擊 → 將指示劑加入燒杯
+    // 桌機雙擊
     card.addEventListener('dblclick', (e) => {
       e.preventDefault();
-      state.currentIndicatorKey = key;
-      state.hasIndicatorInBeaker = true;
-      updateBeakerLiquidColor();
-      triggerLiquidAnim();
-      updateSolutionLabel();
+      applyIndicatorToBeaker(key);
     });
 
-    if (chip) {
+    // ⭐ [ +燒杯 ] 按鈕：手機主力、桌機也可用
+    if (addBtn) {
+      addBtn.addEventListener('click', (e) => {
+        e.stopPropagation();   // 避免順便觸發展開 / 收合
+        applyIndicatorToBeaker(key);
+      });
+    }
+
+    // 桌機拖曳
+    if (chip && !isTouchDevice) {
       chip.setAttribute('draggable', 'true');
       chip.addEventListener('dragstart', (e) => {
         const payload = { type: 'indicator', key };
@@ -566,7 +595,6 @@ document.addEventListener('DOMContentLoaded', () => {
       });
     }
 
-    // 卡片內的 scale-Ai：載入後畫上專屬色帶 + 記錄 doc
     const scaleObj = card.querySelector('.indicator-scale');
     if (scaleObj) {
       scaleObj.addEventListener('load', () => {
