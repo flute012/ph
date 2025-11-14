@@ -493,6 +493,12 @@ body {
     justify-content: center;
     margin-top: 0.1rem;
   }
+  
+  .indicator-add-btn--active {
+    background: linear-gradient(135deg, #22c55e, #16a34a);
+    box-shadow: 0 0 0 1px rgba(34,197,94,0.2), 0 3px 6px rgba(22,163,74,0.35);
+  }
+
 
   /* 待測液體 / 未知溶液 整塊置中對齊標題 */
   .ab-liquid-panel .panel-title {

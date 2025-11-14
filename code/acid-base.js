@@ -105,11 +105,21 @@ const INDICATOR_DATA = {
 
 function applyIndicatorToBeaker(key) {
   if (!INDICATOR_DATA[key]) return;
-  state.currentIndicatorKey = key;
-  state.hasIndicatorInBeaker = true;
+
+  // ⭐ 如果現在燒杯裡就是這個指示劑 → 取消
+  if (state.currentIndicatorKey === key) {
+    state.currentIndicatorKey = null;
+    state.hasIndicatorInBeaker = false;
+  } else {
+    // ⭐ 否則 → 換成這個指示劑
+    state.currentIndicatorKey = key;
+    state.hasIndicatorInBeaker = true;
+  }
+
   updateBeakerLiquidColor();
   triggerLiquidAnim();
   updateSolutionLabel();
+  updateIndicatorAddButtons();
 }
 
 
@@ -585,6 +595,25 @@ document.addEventListener('DOMContentLoaded', () => {
       });
     }
 
+    function updateIndicatorAddButtons() {
+      document.querySelectorAll('.indicator-card').forEach(card => {
+        const key = card.dataset.indicatorKey;
+        const btn = card.querySelector('.indicator-add-btn');
+        if (!btn) return;
+    
+        if (state.currentIndicatorKey === key) {
+          // 這張卡片的指示劑正在燒杯裡
+          btn.textContent = '✔️ 已在燒杯中';
+          btn.classList.add('indicator-add-btn--active');
+        } else {
+          // 沒有被選中
+          btn.textContent = '➕燒杯';
+          btn.classList.remove('indicator-add-btn--active');
+        }
+      });
+    }
+
+
     // 桌機拖曳
     if (chip && !isTouchDevice) {
       chip.setAttribute('draggable', 'true');
@@ -689,6 +718,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
       setPHValue(7, 'reset');
       updateSolutionLabel();
+      updateIndicatorAddButtons(); 
     });
   }
 
