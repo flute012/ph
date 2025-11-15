@@ -434,21 +434,22 @@ body {
 .ab-help-modal ol {
   padding-left: 1.2rem;
   margin: 0 0 0.9rem;
-  font-size: 1rem;
+  font-size: 1.1rem;
   color: #4a5568;
-  line-height:1.9rem;
+  line-height:1.95rem;
 }
 
 .ab-help-close-btn {
   display: inline-block;
   border: none;
   border-radius: 999px;
-  padding: 0.4rem 0.9rem;
+  padding: 0.35rem 1.3rem;
   background: linear-gradient(135deg, #3fc1c9, #36a9e0);
   color: #fff;
   font-weight: 700;
   cursor: pointer;
   transition: transform 0.2s;
+  font-size: 1rem;
 }
 
 .ab-help-close-btn:hover {

@@ -122,8 +122,23 @@ function applyIndicatorToBeaker(key) {
   updateIndicatorAddButtons();
 }
 
+function updateIndicatorAddButtons() {
+  document.querySelectorAll('.indicator-card').forEach(card => {
+    const key = card.dataset.indicatorKey;
+    const btn = card.querySelector('.indicator-add-btn');
+    if (!btn) return;
 
-
+    if (state.currentIndicatorKey === key) {
+      // 這張卡片的指示劑正在燒杯裡
+      btn.textContent = '✔️ 已在燒杯';
+      btn.classList.add('indicator-add-btn--active');
+    } else {
+      // 沒有被選中
+      btn.textContent = '➕ 燒杯';
+      btn.classList.remove('indicator-add-btn--active');
+    }
+  });
+}
 
 
 // ===== 顏色小工具 =====
@@ -558,63 +573,52 @@ document.addEventListener('DOMContentLoaded', () => {
       e.dataTransfer.effectAllowed = 'copy';
     });
   }
+  // 指示劑卡：展開、雙擊 / 手機 double tap、拖曳、scale-Ai 設色
   const isTouchDevice = ('ontouchstart' in window) || (navigator.maxTouchPoints > 0);
-  // 指示劑卡：展開、雙擊、拖曳、scale-Ai 設色
+
   document.querySelectorAll('.indicator-card').forEach(card => {
     const key  = card.dataset.indicatorKey;
     const chip = card.querySelector('.indicator-chip');
-    const addBtn = card.querySelector('.indicator-add-btn');   // ⭐ 新增
+    const addBtn = card.querySelector('.indicator-add-btn'); // 如果有 +燒杯，可以綁這裡
     let lastTapTime = 0;
 
-    // 點卡片：手機 double tap → 倒進燒杯，桌機單擊只展開
+    // 點整張卡
     card.addEventListener('click', (e) => {
       const now = Date.now();
       const timeSinceLastTap = now - lastTapTime;
       lastTapTime = now;
 
+      // 📱 手機 / 平板：短時間連點兩下 → 當成「把指示劑加到燒杯 / 取消」
       if (isTouchDevice && timeSinceLastTap < 400) {
         e.preventDefault();
-        applyIndicatorToBeaker(key);
+        applyIndicatorToBeaker(key);  // 這裡用你前面定義好的 toggle 函式
         return;
       }
 
+      // 🔽 到這裡是「單擊」：只管展開 / 收合說明
+
+      const isMobileLayout = window.matchMedia('(max-width: 768px)').matches;
+
+      if (isMobileLayout) {
+        // ⭐ 手機版：先把其他卡片收起來，做成手風琴
+        document.querySelectorAll('.indicator-card.expanded').forEach(other => {
+          if (other !== card) {
+            other.classList.remove('expanded');
+          }
+        });
+      }
+
+      // 自己的展開 / 收合
       card.classList.toggle('expanded');
     });
 
-    // 桌機雙擊
+    // 💻 桌機雙擊：也視為加入 / 取消指示劑
     card.addEventListener('dblclick', (e) => {
       e.preventDefault();
       applyIndicatorToBeaker(key);
     });
 
-    // ⭐ [ +燒杯 ] 按鈕：手機主力、桌機也可用
-    if (addBtn) {
-      addBtn.addEventListener('click', (e) => {
-        e.stopPropagation();   // 避免順便觸發展開 / 收合
-        applyIndicatorToBeaker(key);
-      });
-    }
-
-    function updateIndicatorAddButtons() {
-      document.querySelectorAll('.indicator-card').forEach(card => {
-        const key = card.dataset.indicatorKey;
-        const btn = card.querySelector('.indicator-add-btn');
-        if (!btn) return;
-    
-        if (state.currentIndicatorKey === key) {
-          // 這張卡片的指示劑正在燒杯裡
-          btn.textContent = '✔️ 已在燒杯中';
-          btn.classList.add('indicator-add-btn--active');
-        } else {
-          // 沒有被選中
-          btn.textContent = '➕燒杯';
-          btn.classList.remove('indicator-add-btn--active');
-        }
-      });
-    }
-
-
-    // 桌機拖曳
+    // 💻 桌機拖曳（手機不啟用，避免跟捲動打架）
     if (chip && !isTouchDevice) {
       chip.setAttribute('draggable', 'true');
       chip.addEventListener('dragstart', (e) => {
@@ -624,6 +628,15 @@ document.addEventListener('DOMContentLoaded', () => {
       });
     }
 
+    // 如果你有做 [+燒杯] 按鈕，就讓它也呼叫 applyIndicatorToBeaker
+    if (addBtn) {
+      addBtn.addEventListener('click', (e) => {
+        e.stopPropagation();     // 避免同時觸發展開/收合
+        applyIndicatorToBeaker(key);
+      });
+    }
+
+    // 卡片內的 scale-Ai：載入後畫上專屬色帶 + 記錄 doc
     const scaleObj = card.querySelector('.indicator-scale');
     if (scaleObj) {
       scaleObj.addEventListener('load', () => {
@@ -636,6 +649,7 @@ document.addEventListener('DOMContentLoaded', () => {
       });
     }
   });
+
 
   // 燒杯 drop 區：接受液體或指示劑
   if (beakerDropZone) {
@@ -663,12 +677,9 @@ document.addEventListener('DOMContentLoaded', () => {
         setPHValue(meta.ph, 'liquid');
         updateSolutionLabel();
       } else if (data.type === 'indicator' && INDICATOR_DATA[data.key]) {
-        state.currentIndicatorKey = data.key;
-        state.hasIndicatorInBeaker = true;
-        updateBeakerLiquidColor();
-        triggerLiquidAnim();
-        updateSolutionLabel();
+        applyIndicatorToBeaker(data.key);
       }
+
     });
   }
 
@@ -730,4 +741,5 @@ document.addEventListener('DOMContentLoaded', () => {
 
   setPHValue(7,'reset');
   updateSolutionLabel();
+  updateIndicatorAddButtons();
 });
