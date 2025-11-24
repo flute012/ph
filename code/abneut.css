@@ -1,0 +1,236 @@
+/* ============================================
+   🔹 酸鹼中和單元：白色玻璃卡片版本
+   ============================================ */
+
+   .abneut-main {
+    max-width: 960px;
+    margin: 0 auto 3rem;
+    padding: 0 1rem 2rem;
+  }
+  
+  /* ✔ 白色玻璃系卡片（與 ph_value、Acid-Base 一致風格） */
+  .abneut-card {
+    position: relative;
+    background: rgba(255, 255, 255, 0.78);
+    border-radius: 1.4rem;
+    padding: 1.5rem 1.4rem 1.6rem;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.18);
+    border: 1px solid rgba(255, 255, 255, 0.9);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    color: #1a1a1a;
+  }
+  
+  /* 進度條 */
+  .abneut-progress {
+    font-size: 0.9rem;
+    letter-spacing: 0.04em;
+    color: #475569;
+    margin-bottom: 0.6rem;
+  }
+  
+  /* 圖片 */
+  .abneut-figure {
+    text-align: center;
+    margin: 0.4rem 0 1rem;
+  }
+  
+  .abneut-image {
+    width: 230px;
+    max-width: 100%;
+    aspect-ratio: 1 / 1;
+    object-fit: contain;
+    border-radius: 1rem;
+    background: radial-gradient(circle at 30% 20%, rgba(255,255,255,0.6), transparent 55%),
+                radial-gradient(circle at 80% 80%, rgba(56,189,248,0.15), transparent 55%);
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15);
+  }
+  
+  /* 文字 */
+  .abneut-scenario {
+    margin: 0.2rem 0;
+    font-size: 1.3rem;
+    line-height: 1.6;
+    color: #334155;
+  }
+  
+  .abneut-question {
+    margin: 0.6rem 0 0.2rem;
+    font-weight: 700;
+    font-size: 1.4rem;
+    color: #0f172a;
+  }
+  
+  /* =====================================
+     選項按鈕
+     ===================================== */
+  
+  .abneut-options {
+    display: flex;
+    justify-content: center;
+    gap: 1.6rem;
+    flex-wrap: wrap;
+    margin: 1.2rem 0 1rem;
+  }
+  
+  .abneut-option-btn {
+    min-width: 150px;
+    padding: 0.9rem 1.6rem;
+    border-radius: 999px;
+    border: none;
+    cursor: pointer;
+    font-weight: 700;
+    font-size: 1.4rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.25);
+    transition: transform 0.12s ease,
+                box-shadow 0.12s ease,
+                opacity 0.12s ease,
+                filter 0.12s ease;
+    color: #fff;
+  }
+  
+  /* 🔹 鹼性：使用你指定的主色系 */
+  .abneut-option-btn--base {
+    background: linear-gradient(135deg, #3fc1c9, #36a9e0);
+  }
+  
+  /* 🔹 酸性：柔和暖色（不刺眼、與主色相容） */
+  .abneut-option-btn--acid {
+    background: linear-gradient(195deg, #d45e5e, #f3a2b0);
+  }
+  
+  /* Hover 效果 */
+  .abneut-option-btn:not(:disabled):hover {
+    transform: translateY(-2px);
+    box-shadow: 0 14px 30px rgba(0, 0, 0, 0.28);
+    filter: brightness(1.06);
+  }
+  
+  /* 選取外框 */
+  .abneut-option-btn--selected {
+    outline: 3px solid rgba(255, 50, 50, 0.7);
+    outline-offset: 3px;
+  }
+  
+  /* 禁用狀態 */
+  .abneut-option-btn:disabled {
+    cursor: default;
+    opacity: 0.92;
+  }
+  
+  /* =====================================
+     回饋文字
+     ===================================== */
+  
+  .abneut-feedback {
+    min-height: 2.1rem;
+    font-size: 0.98rem;
+    line-height: 1.5;
+    margin-bottom: 0.8rem;
+    color: #1e293b;
+  }
+  
+  .abneut-feedback--correct {
+    color: #15803d;
+  }
+  
+  .abneut-feedback--wrong {
+    color: #b91c1c;
+  }
+  
+  /* =====================================
+     確認按鈕
+     ===================================== */
+  
+  .abneut-actions {
+    display: flex;
+    justify-content: center;
+    margin-top: 0.3rem;
+  }
+  
+  #abneut-confirm-btn {
+    padding: 0.75rem 1.9rem;
+    border-radius: 999px;
+    border: none;
+    font-size: 1rem;
+    font-weight: 700;
+    cursor: pointer;
+    background: linear-gradient(135deg, #3fc1c9, #36a9e0);
+    color: #fff;
+    box-shadow: 0 10px 24px rgba(0, 0, 0, 0.28);
+    transition: transform 0.12s ease,
+                box-shadow 0.12s ease,
+                opacity 0.12s ease;
+  }
+  
+  #abneut-confirm-btn:not(:disabled):hover {
+    transform: translateY(-1px);
+    box-shadow: 0 14px 32px rgba(0, 0, 0, 0.35);
+  }
+  
+  #abneut-confirm-btn:disabled {
+    opacity: 0.5;
+    cursor: default;
+    box-shadow: none;
+  }
+  
+  /* =====================================
+     完成頁：summary
+     ===================================== */
+  
+  .abneut-summary {
+    text-align: center;
+    padding: 2rem 1rem;
+    color: #1e293b;
+  }
+  
+  .abneut-summary-title {
+    font-size: 1.8rem;
+    margin-bottom: 1rem;
+    color: #0f172a;
+    font-weight: 800;
+  }
+  
+  .abneut-summary-score {
+    font-size: 1.4rem;
+    margin-bottom: 0.5rem;
+    color: #15803d;
+  }
+  
+  .abneut-summary-percent {
+    font-size: 1.3rem;
+    color: #2563eb;
+    margin-bottom: 1rem;
+    font-weight: 700;
+  }
+  
+  /* =====================================
+     RWD
+     ===================================== */
+  
+  @media (max-width: 600px) {
+    .abneut-card {
+      padding: 1.2rem 1rem 1.3rem;
+    }
+  
+    .abneut-image {
+      width: 190px;
+    }
+  
+    .abneut-option-btn {
+      min-width: 130px;
+      width: 100%;
+      max-width: 260px;
+      font-size: 1.05rem;
+      padding: 0.8rem 1.2rem;
+    }
+  
+    #abneut-confirm-btn {
+      width: 100%;
+      max-width: 260px;
+    }
+  }
+  

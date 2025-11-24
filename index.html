@@ -3,6 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <link rel="icon" href="./icons/ltedu.ico" type="image/x-icon">
   <title>酸與鹼的挑戰｜酸鹼反應的化學奇遇記</title>
   <link rel="stylesheet" href="./code/style.css" />
 
@@ -19,20 +20,20 @@
   <script async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
 </head>
 
-<body>
+<body class="no-scroll">
   <div id="app">
     <!-- 主標題區 -->
     <header>
       <h1>酸與鹼的挑戰</h1>
-      <p>酸鹼反應的化學奇遇記</p>
+      <p>🫧 酸鹼反應的化學奇遇記 🫧</p>
     </header>
 
     <!-- 主頁按鈕：田字排列 -->
     <main class="menu-grid">
       <button class="menu-btn B" onclick="window.location='ph_value.html'">🧪 量測 pH 值</button>
       <button class="menu-btn A" onclick="window.location='Acid-Base.html'">🌈 酸鹼指示劑的檢測</button>
-      <button class="menu-btn C">🧉 酸鹼中和的應用</button>
-      <button class="menu-btn D">🧠 知識王</button>
+      <button class="menu-btn C" onclick="window.location='ABNeut.html'">🧉 酸鹼中和的應用</button>
+      <button class="menu-btn D" onclick="window.location='Knowledge.html'">🧠 知識王</button>
     </main>
 
     <!-- 彈出視窗：基礎知識 -->
@@ -68,7 +69,11 @@
       </div>
     </div>
   </div>
-
+  <div class="indicator-scale-wrap">
+    <footer class="ambient-footer">
+      <img src="icons/preview.png" alt="分子圖">
+    </footer>
+  </div>
   <!-- Vue + Main Script -->
   <script src="https://unpkg.com/vue@3.4.15/dist/vue.global.prod.js"></script>
   <script src="./code/main.js"></script>

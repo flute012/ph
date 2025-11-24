@@ -4,20 +4,12 @@
   padding: 0.3rem 1rem;
   border-radius: 999px;
   background: #fafbff;
-  color: #4c51bf;
+  color: #595a61;
   font-size: 1rem;
   font-weight: 600;
 }
 
-.ph-title {
-  font-size: 1.9rem;
-  margin: 0.2rem 0 0.4rem;
-}
 
-.ph-subtitle {
-  font-size: 0.95rem;
-  color: #555;
-}
 
 .ph-layout {
   max-width: 1000px;
@@ -93,16 +85,18 @@
   margin-bottom: 1rem;
   padding: 0.4rem 2.5rem;
   font-size: 1.4rem;
+  font-weight: 700;
   border-radius: 1.5rem;
   border: none;
-  background: #81bffd;
+  background: linear-gradient(135deg, #3fc1c9, #36a9e0);
   cursor: pointer;
-  border: 0.5px solid rgb(166, 221, 247) 
-  
+  border: 0.5px solid rgb(166, 221, 247);
+  color:#edf2f7; 
+
 }
 
 .reset-btn:hover {
-  background: #ceedffc4;
+  background:   linear-gradient(135deg, #b1e3df, #b1e3ffc4);
   border: 0.5px solid #f6fdff;
 }
 

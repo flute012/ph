@@ -1,0 +1,152 @@
+[
+  {
+    "id": "K1_Q1",
+    "question": "阿瑞尼斯對酸鹼的定義，下列敘述，何者正確？",
+    "options": [
+      {
+        "id": "A",
+        "text": "水溶液中產生陰、陽離子的現象",
+        "isCorrect": false,
+        "explanation": " "
+      },
+      {
+        "id": "B",
+        "text": "熔融態導電的現象",
+        "isCorrect": false,
+        "explanation": " "
+      },
+      {
+        "id": "C",
+        "text": "水溶液態導電的現象",
+        "isCorrect": false,
+        "explanation": " "
+      },
+      {
+        "id": "D",
+        "text": "水溶液中可解離出 H⁺、OH⁻ 離子的現象",
+        "isCorrect": true,
+        "explanation": " "
+      }
+    ]
+  },
+  {
+    "id": "K1_Q2",
+    "question": "下列生活中的日常用品，何項屬於鹼性？",
+    "options": [
+      {
+        "id": "A",
+        "text": "汽水",
+        "isCorrect": false,
+        "explanation": ""
+      },
+      {
+        "id": "B",
+        "text": "醋",
+        "isCorrect": false,
+        "explanation": " "
+      },
+      {
+        "id": "C",
+        "text": "肥皂",
+        "isCorrect": true,
+        "explanation": "(A) 汽水為酸性（碳酸飲料)、(B) 醋為醋酸水溶液，為酸性、(C) 醬油為多種胺基酸之有機溶液"
+      },
+      {
+        "id": "D",
+        "text": "醬油",
+        "isCorrect": false,
+        "explanation": " "
+      }
+    ]
+  },
+  {
+    "id": "K1_Q3",
+    "question": "於肥皂水中滴入下列何種指示劑後，溶液呈藍色？",
+    "options": [
+      {
+        "id": "A",
+        "text": "甲基紅",
+        "isCorrect": false,
+        "explanation": " "
+      },
+      {
+        "id": "B",
+        "text": "甲基黃",
+        "isCorrect": false,
+        "explanation": " "
+      },
+      {
+        "id": "C",
+        "text": "石蕊",
+        "isCorrect": true,
+        "explanation": "肥皂水的 pH 值約為 10.0，故只有石蕊呈藍色。"
+      },
+      {
+        "id": "D",
+        "text": "酚酞",
+        "isCorrect": false,
+        "explanation": " "
+      }
+    ]
+  },
+  {
+    "id": "K1_Q4",
+    "question": "小龍應選用下列何種指示劑，可較明顯呈現檸檬汁的酸性 pH 值呢？（括號內為pH值變色範圍）",
+    "options": [
+      {
+        "id": "A",
+        "text": "溴瑞香草酚藍（6～7.5）",
+        "isCorrect": false,
+        "explanation": " "
+      },
+      {
+        "id": "B",
+        "text": "甲基橙（3～4.5）",
+        "isCorrect": true,
+        "explanation": "宜選用變色範圍在 pH 2～3 具有明顯變化的指示劑。"
+      },
+      {
+        "id": "C",
+        "text": "甲基紅（4.5～6）",
+        "isCorrect": false,
+        "explanation": " "
+      },
+      {
+        "id": "D",
+        "text": "酚酞（8～10）",
+        "isCorrect": false,
+        "explanation": " "
+      }
+    ]
+  },  
+  {
+    "id": "K1_Q5",
+    "question": "請問下列何項無法緩和螞蟻叮咬的疼痛？",
+    "options": [
+      {
+        "id": "A",
+        "text": "牙膏",
+        "isCorrect": false,
+        "explanation": " "
+      },
+      {
+        "id": "B",
+        "text": "肥皂水",
+        "isCorrect": false,
+        "explanation": " "
+      },
+      {
+        "id": "C",
+        "text": "尿液",
+        "isCorrect": false,
+        "explanation": " "
+      },
+      {
+        "id": "D",
+        "text": "食鹽水",
+        "isCorrect": true,
+        "explanation": "牙膏、肥皂水、尿液皆為鹼性物質，可中和螞蟻叮咬的蟻酸（甲酸）；食鹽水則不具中和作用。"
+      }
+    ]
+  }
+]

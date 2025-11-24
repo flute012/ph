@@ -1,6 +1,6 @@
 /* 讓整頁文字回到左對齊 */
 body {
-  text-align: initial;
+ text-align: center;
 }
 
 /* 回主頁按鈕 */
@@ -28,6 +28,10 @@ body {
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
   border: 12px solid rgba(255, 255, 255, 0.15);
+}
+
+.ph-title {
+  text-align: center;
 }
 
 /* 共用 panel */
