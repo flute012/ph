@@ -30,7 +30,7 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     })
     .catch(err => {
-      feedbackEl.textContent = '題庫載入失敗，請稍後再試。';
+      feedbackEl.textContent = '題庫載入失敗,請稍後再試。';
     });
 
   function showQuestion(index) {
@@ -70,11 +70,16 @@ document.addEventListener('DOMContentLoaded', () => {
         });
 
         feedbackEl.textContent =
-          (isCorrect ? '✅ 答對了！' : '❌') +
+          (isCorrect ? '✅ 答對了!' : '❌') +
           (q.explanation ? ' ' + q.explanation : '');
 
         feedbackEl.className = 'abneut-feedback';
         feedbackEl.classList.add(isCorrect ? 'abneut-feedback--correct' : 'abneut-feedback--wrong');
+
+        // 🔹 渲染 MathJax (解析區)
+        if (window.MathJax) {
+          MathJax.typesetPromise([feedbackEl]).catch(err => console.log('MathJax Error:', err));
+        }
 
         confirmBtn.disabled = false;
 
@@ -91,9 +96,14 @@ document.addEventListener('DOMContentLoaded', () => {
     feedbackEl.textContent = '';
     feedbackEl.className = 'abneut-feedback';
     confirmBtn.disabled = true;
+
+    // 🔹 渲染 MathJax (情境 + 題目)
+    if (window.MathJax) {
+      MathJax.typesetPromise([scenarioEl, questionEl]).catch(err => console.log('MathJax Error:', err));
+    }
   }
 
-  // [確認]：下一題或顯示總結
+  // [確認]:下一題或顯示總結
   confirmBtn.addEventListener('click', () => {
     if (!questions.length) return;
 
@@ -112,13 +122,13 @@ document.addEventListener('DOMContentLoaded', () => {
     const total = questions.length;
     const percent = Math.round((correctCount / total) * 100);
 
-    // 清空整個題卡內容，只保留一個總結畫面
+    // 清空整個題卡內容,只保留一個總結畫面
     const card = document.getElementById('abneut-card');
     card.innerHTML = `
       <div class="abneut-summary">
-        <h2 class="abneut-summary-title">🎉 完成挑戰！</h2>
-        <p class="abneut-summary-score">答對：<strong>${correctCount}</strong> / ${total} 題</p>
-        <p class="abneut-summary-percent">正確率：<strong>${percent}%</strong></p>
+        <h2 class="abneut-summary-title">🎉 完成挑戰!</h2>
+        <p class="abneut-summary-score">答對:<strong>${correctCount}</strong> / ${total} 題</p>
+        <p class="abneut-summary-percent">正確率:<strong>${percent}%</strong></p>
       </div>
     `;
   }

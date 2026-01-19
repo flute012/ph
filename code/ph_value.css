@@ -18,15 +18,15 @@
   display: flex;
   gap: 1.5rem;
   flex-wrap: wrap;
-  background: radial-gradient(ellipse at center,  rgba(250, 251, 255, 1) 0%, rgba(255, 255, 255, 0.9) 100%);
+  background: radial-gradient(ellipse at center, rgba(250, 251, 255, 1) 0%, rgba(255, 255, 255, 0.9) 100%);
   border-radius: 1.5rem;
   backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px); 
-  border: 12px solid rgba(255, 255, 255, 0.15); 
+  -webkit-backdrop-filter: blur(20px);
+  border: 12px solid rgba(255, 255, 255, 0.15);
 }
 
 
-.ph-layout:after{
+.ph-layout:after {
   content: "";
 
 }
@@ -47,39 +47,39 @@
 
 .sample-select-row {
   display: flex;
-  flex-direction: column; 
-  align-items: center; 
+  flex-direction: column;
+  align-items: center;
   gap: 0.8rem;
   flex-wrap: wrap;
   margin-bottom: 0.8rem;
 }
 
 .select-wrapper select {
-  padding: 0.4rem 0.6rem;
-  font-size: 1.3rem;
+  padding: 0.5rem 0.75rem;
+  font-size: 1.5rem;
   border-radius: 0.6rem;
   border: 1px solid #cbd5e0;
   min-width: 180px;
-  margin: 0 auto; 
+  margin: 0 auto;
 }
 
 .sample-icon {
   display: flex;
-  flex-direction: column; 
+  flex-direction: column;
   align-items: center;
   gap: 0.4rem;
   font-size: 0.9rem;
-  margin: 1.2rem auto;
+  margin: 1.3rem auto;
 
 }
 
 .sample-icon img {
-  width: 9em;
-  height: 9em;
+  width: 10em;
+  height: 10em;
   object-fit: contain;
 }
 
-/* 重置按鈕 */
+/* 重置按鈕 
 .reset-btn {
   margin-top: 0.2rem;
   margin-bottom: 1rem;
@@ -98,7 +98,7 @@
 .reset-btn:hover {
   background:   linear-gradient(135deg, #b1e3df, #b1e3ffc4);
   border: 0.5px solid #f6fdff;
-}
+}*/
 
 /* pH 計外觀 */
 .meter-panel {
@@ -170,7 +170,7 @@
 }
 
 .beaker-svg {
-  width: 100%;
+  width: 99%;
   max-width: 280px;
 }
 
@@ -190,10 +190,10 @@
 }
 
 .indicator-note {
-  font-size: 1rem;
+  font-size: 1.1rem;
   color: #555;
-  margin-bottom: 0.4rem;
-  padding-bottom: 1.5rem;
+  margin-top: 0.3rem;
+  padding-bottom: 1.2rem;
 }
 
 .indicator-bar {
@@ -216,9 +216,9 @@
   align-items: flex-end;
   justify-content: center;
   font-size: 1rem;
-  font-weight:bold;
+  font-weight: bold;
   color: #f5f5f5;
-  text-shadow: 0 0 3px rgba(0,0,0,0.4);
+  text-shadow: 0 0 3px rgba(0, 0, 0, 0.4);
   opacity: 0.9;
   padding-bottom: 0.5rem;
 }
@@ -257,6 +257,56 @@
   text-align: center;
 }
 
+/* 展開/收合按鈕 */
+.toggle-indicator-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+  width: 100%;
+  max-width: 460px;
+  margin: 0.8rem auto 0.8rem;
+  font-size: 1.3rem;
+  font-weight: 600;
+  padding: 1rem 0.6rem 1rem 0.6rem;
+  border: 0.13rem solid rgba(255, 255, 255, 0.5);
+  border-radius: 1rem;
+  border-color: transparent;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15),
+    0 0 0 1px rgba(255, 255, 255, 0.08) inset;
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  color: #ffffff;
+  letter-spacing: 0.05rem;
+  background: linear-gradient(130deg, #61c1d4, #4193F2);
+}
+
+.toggle-indicator-btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 10px rgba(0, 0, 0, 0.25);
+}
+
+.toggle-arrow {
+  font-size: 0.9rem;
+  transition: transform 0.3s ease;
+}
+
+.toggle-arrow.open {
+  transform: rotate(180deg);
+}
+
+/* 內容區塊展開動畫 */
+.indicator-content {
+  overflow: hidden;
+  transition: max-height 0.4s ease, opacity 0.3s ease;
+}
+
+.indicator-content.show {
+  display: block !important;
+}
+
 /* 手機排版 */
 @media (max-width: 640px) {
   .ph-layout {
@@ -267,5 +317,10 @@
     height: 3rem;
     font-size: 0.8rem;
     padding-bottom: 0.4rem;
+  }
+
+  .toggle-indicator-btn {
+    font-size: 1.05rem;
+    padding: 0.85rem 1rem;
   }
 }

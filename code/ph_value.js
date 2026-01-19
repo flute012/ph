@@ -14,7 +14,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   const BASE_LIQUID_COLOR = '#6dc1b4';
 
-  // pH 顏色色票
+  // ========== 廣用試紙 pH 顏色色票（用於試紙指示） ==========
   const phColors = {
     1: "#ee2d22",
     2: "#f54b41",
@@ -32,6 +32,22 @@ document.addEventListener('DOMContentLoaded', () => {
     14: "#3e0576"
   };
 
+  // ========== 燒杯中溶液的真實顏色（與試紙分開） ==========
+  const liquidColors = {
+    "胃液": "#adbf88",      // 淡黃綠色
+    "檸檬汁": "#f5e6a3'",    // 淡黃色
+    "可樂": "#611b00",      // 深棕色（可樂色）
+    "啤酒": "#f0a830",      // 金黃色
+    "咖啡": "#401d04",      // 深咖啡色
+    "牛奶": "#fdfff5",      // 乳白色
+    "水": "#a8d8ea",        // 淡藍透明感
+    "血液": "#8b0000",      // 深紅色
+    "沐浴乳": "#f8e0e8",    // 淡粉色
+    "清潔劑": "#7ec8e3",    // 淡藍色
+    "洗衣精": "#4a90d9",    // 藍色
+    "通樂": "#2e5090"       // 深藍色
+  };
+
   // 各液體對應大致 pH 值
   const samplePh = {
     "胃液": 1,
@@ -42,9 +58,9 @@ document.addEventListener('DOMContentLoaded', () => {
     "牛奶": 6,
     "水": 7,
     "血液": 8,
-    "沐浴乳": 9,
-    "清潔劑": 10,
-    "洗衣精": 11,
+    "沐浴乳": 10,
+    "清潔劑": 11,
+    "洗衣精": 12,
     "通樂": 14
   };
 
@@ -84,7 +100,7 @@ document.addEventListener('DOMContentLoaded', () => {
       ((1 << 24) + (r << 16) + (g << 8) + b).toString(16).slice(1);
   }
 
-  // 初始化 pH 色條
+  // 初始化 pH 色條（廣用試紙顏色）
   indicatorCells.forEach(cell => {
     const ph = Number(cell.dataset.ph);
     const color = phColors[ph];
@@ -122,10 +138,10 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     const ph = samplePh[name];
-    const color = phColors[ph] || BASE_LIQUID_COLOR;
 
-    // 更新液體顏色（含陰影與高光）
-    setLiquidColor(color);
+    // ✅ 燒杯溶液使用「真實液體顏色」
+    const realColor = liquidColors[name] || BASE_LIQUID_COLOR;
+    setLiquidColor(realColor);
 
     // 更新儀器螢幕數字
     phText.textContent = ph.toFixed(1);
@@ -135,21 +151,42 @@ document.addEventListener('DOMContentLoaded', () => {
     sampleIcon.src = iconPath;
     sampleIcon.alt = name;
 
-    // 高亮對應色塊
+    // ✅ 廣用試紙高亮對應色塊（使用 phColors）
     indicatorCells.forEach(cell => {
       const cellPh = Number(cell.dataset.ph);
       cell.classList.toggle('active', cellPh === ph);
     });
 
-    // 調整指針位置
-    const percent = (ph - 0.5) / 14 * 100; // 大約指向該格中間
+    // 調整指標位置
+    const percent = (ph - 0.5) / 14 * 100;
     indicatorPointer.style.left = `${percent}%`;
     indicatorPointer.style.opacity = '1';
     pointerLabel.textContent = `pH ${ph}`;
   }
 
   liquidSelect.addEventListener('change', updateUI);
-  resetBtn.addEventListener('click', resetAll);
+  if (resetBtn) {
+    resetBtn.addEventListener('click', resetAll);
+  }
+
+  // 展開/收合廣用試紙區塊
+  const toggleBtn = document.getElementById('toggleIndicatorBtn');
+  const toggleArrow = document.getElementById('toggleArrow');
+  const indicatorContent = document.getElementById('indicatorContent');
+
+  if (toggleBtn && indicatorContent) {
+    toggleBtn.addEventListener('click', function () {
+      const isHidden = indicatorContent.style.display === 'none';
+
+      if (isHidden) {
+        indicatorContent.style.display = 'block';
+        toggleArrow.classList.add('open');
+      } else {
+        indicatorContent.style.display = 'none';
+        toggleArrow.classList.remove('open');
+      }
+    });
+  }
 
   // 初始狀態
   resetAll();

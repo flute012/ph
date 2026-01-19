@@ -1,6 +1,6 @@
 /* 讓整頁文字回到左對齊 */
 body {
- text-align: center;
+  text-align: center;
 }
 
 /* 回主頁按鈕 */
@@ -39,7 +39,7 @@ body {
   background: rgba(255, 255, 255, 0.9);
   border-radius: 1.2rem;
   padding: 0.9rem 1rem;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
   text-align: left;
   margin-top: 1.1rem;
 }
@@ -107,6 +107,26 @@ body {
   font-size: 0.9rem;
   font-weight: 600;
   cursor: grab;
+  transition: opacity 0.2s, transform 0.2s, box-shadow 0.2s;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+/* 🔧 拖曳時的視覺效果 */
+.indicator-chip.dragging {
+  opacity: 0.5;
+  transform: scale(0.95);
+  box-shadow: 0 4px 12px rgba(59, 130, 246, 0.4);
+}
+
+.indicator-chip:hover {
+  box-shadow: 0 2px 8px rgba(59, 130, 246, 0.3);
+}
+
+/* 待測液體圖示拖曳中 */
+.sample-icon img.dragging {
+  opacity: 0.5;
+  transform: scale(0.9);
 }
 
 .indicator-card:active .indicator-chip {
@@ -123,21 +143,27 @@ body {
 .indicator-color-swatch.thymol {
   background: linear-gradient(90deg, #ee2d22, #ffd10a, #48c2f9);
 }
+
 .indicator-color-swatch.btb {
   background: linear-gradient(90deg, #ffd10a, #3fa142, #48c2f9);
 }
+
 .indicator-color-swatch.mo {
   background: linear-gradient(90deg, #fb6222, #ffd10a);
 }
+
 .indicator-color-swatch.mr {
   background: linear-gradient(90deg, #fb6222, #75cc20);
 }
+
 .indicator-color-swatch.pp {
   background: linear-gradient(90deg, #ffffff, #dd6da1);
 }
+
 .indicator-color-swatch.rc {
   background: linear-gradient(90deg, #ee2d22, #ffd10a, #3fa142, #0086d4, #3e0576);
 }
+
 .indicator-color-swatch.bp {
   background: linear-gradient(90deg, #fb6222, #ff8ad6, #3e0576, #0086d4, #0ee479);
 }
@@ -203,6 +229,7 @@ body {
   width: 7.5em;
   height: 7.5em;
   object-fit: contain;
+  transition: opacity 0.2s, transform 0.2s;
 }
 
 .select-wrapper select {
@@ -261,6 +288,12 @@ body {
   color: #2d3748;
 }
 
+.note {
+  font-size: 1rem;
+  color: #64748b;
+  margin-bottom: 0.5rem;
+}
+
 /* 右側：燒杯 drop 區 */
 .ab-beaker-drop-zone {
   border-radius: 1rem;
@@ -269,12 +302,16 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  min-height: 260px;
+  min-height: 530px;
+  transition: border-color 0.2s, background 0.2s, box-shadow 0.2s;
 }
 
+/* 🔧 拖曳進入時的高亮效果 */
 .ab-beaker-drop-zone.drag-over {
   border-style: solid;
-  background: rgba(219, 234, 254, 0.45);
+  border-color: #3b82f6;
+  background: rgba(219, 234, 254, 0.5);
+  box-shadow: 0 0 20px rgba(59, 130, 246, 0.3);
 }
 
 /* 燒杯 SVG 容器  */
@@ -298,19 +335,19 @@ body {
 /* ===== 膠囊標示：顯示當前指示劑和液體 ===== */
 .solution-label {
   position: absolute;
-  top: 10px;
-  right: 10px;
+  top: 3rem;
+  right: 1.4rem;
   background: linear-gradient(135deg, rgba(191, 219, 254, 0.95), rgba(219, 234, 254, 0.95));
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
   border-radius: 999px;
-  padding: 0.5rem 1rem;
+  padding: 0.6rem 1.1rem;
   box-shadow:
     0 4px 6px rgba(59, 130, 246, 0.15),
     0 0 0 1px rgba(255, 255, 255, 0.6) inset;
   display: flex;
   gap: 0.8rem;
-  min-width: 140px;
+  min-width: 120px;
   transition: all 0.3s ease;
   align-items: center;
 }
@@ -326,11 +363,11 @@ body {
   display: flex;
   align-items: center;
   gap: 0.4rem;
-  font-size: 0.8rem;
+  font-size: 0.7rem;
 }
 
 .solution-label-icon {
-  font-size: 0.9rem;
+  font-size: 0.7rem;
   opacity: 0.8;
 }
 
@@ -366,9 +403,17 @@ body {
 
 /* 液面動畫 */
 @keyframes liquid-bump {
-  0% { transform: scale(1); }
-  25% { transform: scale(1.04); }
-  100% { transform: scale(1); }
+  0% {
+    transform: scale(1);
+  }
+
+  25% {
+    transform: scale(1.04);
+  }
+
+  100% {
+    transform: scale(1);
+  }
 }
 
 #beaker-svg-root #liquid {
@@ -399,13 +444,13 @@ body {
   font-size: 1rem;
   font-weight: 700;
   cursor: pointer;
-  box-shadow: 0 3px 8px rgba(0,0,0,0.2);
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.2);
   transition: transform 0.2s, box-shadow 0.2s;
 }
 
 .ab-reset-btn:hover {
   transform: translateY(-2px);
-  box-shadow: 0 5px 12px rgba(0,0,0,0.25);
+  box-shadow: 0 5px 12px rgba(0, 0, 0, 0.25);
 }
 
 /* ===== 說明彈窗 ===== */
@@ -431,16 +476,17 @@ body {
 
 .ab-help-modal h2 {
   margin-top: 0;
-  margin-bottom: 0.6rem;
+  margin-bottom: 0.5rem;
   color: #1a202c;
+  font-size: 1.2rem;
 }
 
 .ab-help-modal ol {
-  padding-left: 1.2rem;
-  margin: 0 0 0.9rem;
-  font-size: 1.1rem;
+  padding-left: 1.1rem;
+  margin: 0 0 0.6rem;
+  font-size: 0.9rem;
   color: #4a5568;
-  line-height:1.95rem;
+  line-height: 1.7rem;
 }
 
 .ab-help-close-btn {
@@ -459,7 +505,156 @@ body {
 .ab-help-close-btn:hover {
   transform: scale(1.05);
 }
-/* [ +燒杯 ] 按鈕：桌機預設隱藏，只給手機用 */
+
+/* 📄 分頁系統 */
+.ab-help-page {
+  display: none;
+}
+
+.ab-help-page.active {
+  display: block;
+}
+
+/* 第一頁按鈕列 */
+.ab-help-btn-row {
+  display: flex;
+  gap: 0.6rem;
+  justify-content: center;
+  margin-top: 0.5rem;
+}
+
+.ab-help-next-btn {
+  display: inline-block;
+  border: none;
+  border-radius: 999px;
+  padding: 0.35rem 1rem;
+  background: linear-gradient(135deg, #f59e0b, #f97316);
+  color: #fff;
+  font-weight: 700;
+  cursor: pointer;
+  transition: transform 0.2s;
+  font-size: 0.9rem;
+}
+
+.ab-help-next-btn:hover {
+  transform: scale(1.05);
+}
+
+/* 第二頁標題列 */
+.ab-help-page2-header {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 0.6rem;
+}
+
+.ab-help-page2-header h2 {
+  flex: 1;
+  text-align: center;
+  margin: 0;
+  padding-right: 2.5rem;
+  /* 平衡返回按鈕的寬度 */
+}
+
+.ab-help-back-btn {
+  border: none;
+  border-radius: 999px;
+  padding: 0.25rem 0.8rem;
+  background: rgba(100, 116, 139, 0.15);
+  color: #475569;
+  font-weight: 600;
+  cursor: pointer;
+  transition: transform 0.2s, background 0.2s;
+  font-size: 0.85rem;
+}
+
+.ab-help-back-btn:hover {
+  background: rgba(100, 116, 139, 0.25);
+  transform: scale(1.05);
+}
+
+/* 🎬 GIF 輪播區域 */
+.ab-help-carousel {
+  margin: 0.5rem 0 1rem;
+}
+
+.ab-carousel-container {
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+}
+
+.ab-carousel-viewport {
+  flex: 1;
+  overflow: hidden;
+  border-radius: 0.6rem;
+  background: rgba(248, 250, 252, 0.9);
+}
+
+.ab-carousel-track {
+  display: flex;
+  transition: transform 0.3s ease-out;
+}
+
+.ab-carousel-slide {
+  min-width: 100%;
+  padding: 0.5rem;
+  box-sizing: border-box;
+  text-align: center;
+  display: none;
+}
+
+.ab-carousel-slide.active {
+  display: block;
+}
+
+.ab-carousel-slide img {
+  width: 100%;
+  max-height: 180px;
+  object-fit: contain;
+  border-radius: 0.4rem;
+  border: 1px solid rgba(15, 23, 42, 0.1);
+  background: #fff;
+}
+
+.ab-carousel-caption {
+  margin: 0.4rem 0 0;
+  font-size: 0.85rem;
+  color: #475569;
+  font-weight: 600;
+}
+
+/* 左右箭頭 */
+.ab-carousel-arrow {
+  width: 32px;
+  height: 32px;
+  border: none;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #3fc1c9, #36a9e0);
+  color: #fff;
+  font-size: 1.4rem;
+  font-weight: bold;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.15s, box-shadow 0.15s;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+  flex-shrink: 0;
+  line-height: 1;
+  padding-bottom: 2px;
+}
+
+.ab-carousel-arrow:hover {
+  transform: scale(1.1);
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
+}
+
+.ab-carousel-arrow:active {
+  transform: scale(0.95);
+}
+
+/* [ +燒杯 ] 按鈕：桌機預設隱藏 */
 .indicator-add-btn {
   display: none;
   border: none;
@@ -473,8 +668,28 @@ body {
   white-space: nowrap;
 }
 
-/* 讓指示劑卡片在手機版變成「chip 置中、說明文字在下面換行」 */
-@media (max-width: 768px) {
+/* 平板直向 & 手機優化（寬度小於 900px 切換成單欄） */
+@media (max-width: 900px) {
+  .ab-layout {
+    grid-template-columns: 1fr;
+  }
+
+  /* 版面變單欄時顯示 [ +燒杯 ] 按鈕 */
+  .indicator-add-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 0.1rem;
+  }
+
+  .indicator-add-btn--active {
+    background: linear-gradient(135deg, #22c55e, #16a34a);
+    box-shadow: 0 0 0 1px rgba(34, 197, 94, 0.2), 0 3px 6px rgba(22, 163, 74, 0.35);
+  }
+}
+
+/* 手機版額外優化（600px 以下） */
+@media (max-width: 600px) {
   .indicator-summary {
     flex-direction: column;
     align-items: center;
@@ -491,20 +706,6 @@ body {
     max-width: 100%;
   }
 
-  /* 手機時顯示 [ +燒杯 ] 按鈕 */
-  .indicator-add-btn {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    margin-top: 0.1rem;
-  }
-  
-  .indicator-add-btn--active {
-    background: linear-gradient(135deg, #22c55e, #16a34a);
-    box-shadow: 0 0 0 1px rgba(34,197,94,0.2), 0 3px 6px rgba(22,163,74,0.35);
-  }
-
-
   /* 待測液體 / 未知溶液 整塊置中對齊標題 */
   .ab-liquid-panel .panel-title {
     text-align: center;
@@ -518,18 +719,6 @@ body {
   .ab-column {
     text-align: center;
   }
-  
-  .ab-layout {
-    grid-template-columns: 1fr;
-
-}
-
-
-
-
-  .ab-liquid-row {
-    flex-direction: column;
-  }
 
   .beaker-svg {
     max-width: 280px;
@@ -537,13 +726,5 @@ body {
 
   .panel-title {
     font-size: 1.2rem;
-  }
-
-}
-
-/* 平板優化 */
-@media (max-width: 1024px) and (min-width: 769px) {
-  .ab-layout {
-    grid-template-columns: 1fr;
   }
 }

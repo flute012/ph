@@ -10,8 +10,6 @@ createApp({
     onMounted(() => {
       // 初始 typeset LaTeX
       if (window.MathJax) nextTick(() => window.MathJax.typeset());
-      // 自動關閉 Modal
-      setTimeout(() => { showModal.value = false; }, 30000);
     });
 
     // 當 Modal 重新打開時重新渲染 LaTeX

@@ -23,7 +23,7 @@
       },
       {
         "id": "D",
-        "text": "水溶液中可解離出 H⁺、OH⁻ 離子的現象",
+        "text": "水溶液中可解離出 H⁺、OH⁻ 的現象",
         "isCorrect": true,
         "explanation": " "
       }
@@ -79,7 +79,7 @@
         "id": "C",
         "text": "石蕊",
         "isCorrect": true,
-        "explanation": "肥皂水的 pH 值約為 10.0，故只有石蕊呈藍色。"
+        "explanation": "肥皂水的 pH 值約為 9.0，故只有石蕊呈藍色。"
       },
       {
         "id": "D",
@@ -91,34 +91,34 @@
   },
   {
     "id": "K1_Q4",
-    "question": "小龍應選用下列何種指示劑，可較明顯呈現檸檬汁的酸性 pH 值呢？（括號內為pH值變色範圍）",
+    "question": "小龍想用酸鹼指示劑來區分兩種透明的液體：檸檬汁與純水。下列何者沒辦法使兩者呈現明顯的顏色差異？",
     "options": [
       {
         "id": "A",
-        "text": "溴瑞香草酚藍（6～7.5）",
+        "text": "溴瑞香草酚藍（6～7.6）",
         "isCorrect": false,
         "explanation": " "
       },
       {
         "id": "B",
-        "text": "甲基橙（3～4.5）",
-        "isCorrect": true,
-        "explanation": "宜選用變色範圍在 pH 2～3 具有明顯變化的指示劑。"
+        "text": "甲基橙（3.2～4.4）",
+        "isCorrect": false,
+        "explanation": " "
       },
       {
         "id": "C",
-        "text": "甲基紅（4.5～6）",
+        "text": "甲基紅（4.8～6.0）",
         "isCorrect": false,
         "explanation": " "
       },
       {
         "id": "D",
-        "text": "酚酞（8～10）",
-        "isCorrect": false,
-        "explanation": " "
+        "text": "酚酞（8.2～10.0）",
+        "isCorrect": true,
+        "explanation": "檸檬汁與純水滴入酚酞接會呈現透明無色，因此無法區分檸檬汁（酸性）與純水（中性）。"
       }
     ]
-  },  
+  },
   {
     "id": "K1_Q5",
     "question": "請問下列何項無法緩和螞蟻叮咬的疼痛？",

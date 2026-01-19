@@ -2,16 +2,14 @@ body {
   font-family: "Noto Sans TC", sans-serif;
   text-align: center;
   color: #222;
-  text-align: center;
   background-image: url('2397444573.jpg');
   background-size: cover;
   background-attachment: fixed;
   position: relative;
-
+  margin: 0;
+  padding: 0;
 }
 
-
-/* 模糊效果 */
 body::before {
   content: "";
   position: fixed;
@@ -21,40 +19,207 @@ body::before {
   height: 100%;
   background-image: inherit;
   background-size: cover;
-  filter: blur(15px); /* 調整模糊程度 */
+  filter: blur(15px);
   z-index: -1;
 }
 
-/* 內容層 */
+body::-webkit-scrollbar {
+  display: none;
+}
+
+
 .content {
   position: relative;
   z-index: 1;
   padding: 20px;
   color: white;
-  background-color: rgba(255, 253, 250, 0.3); /* 半透明白色背景 */
-  backdrop-filter: blur(9px); /* 玻璃感 */
+  background-color: rgba(255, 253, 250, 0.3);
+  backdrop-filter: blur(9px);
   min-height: 100vh;
   box-sizing: border-box;
 }
 
+
+
+/* 燈泡按鈕容器：置中 */
+.bulb-wrapper {
+  display: flex;
+  justify-content: center;
+  margin-top: 1rem;
+}
+
+/* 小燈泡按鈕樣式 */
+.bulb-btn {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background: linear-gradient(145deg, #ffe066, #ffcc00);
+  border: none;
+  cursor: pointer;
+  font-size: 1.8rem;
+  box-shadow:
+    0 4px 15px rgba(255, 200, 0, 0.5),
+    0 0 20px rgba(255, 220, 0, 0.3);
+  transition: all 0.3s ease;
+  z-index: 98;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.bulb-btn:hover {
+  transform: scale(1.15);
+  box-shadow:
+    0 6px 20px rgba(255, 200, 0, 0.7),
+    0 0 30px rgba(255, 220, 0, 0.5);
+}
+
+.bulb-btn:active {
+  transform: scale(0.95);
+}
+
+/* 燈泡呼吸發光效果 */
+.bulb-btn::after {
+  content: '';
+  position: absolute;
+  width: 5%;
+  height: 5%;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(255, 220, 0, 0.4) 0%, transparent 70%);
+  animation: bulbGlow 2s ease-in-out infinite;
+  pointer-events: none;
+}
+
+@keyframes bulbGlow {
+
+  0%,
+  100% {
+    transform: scale(1);
+    opacity: 0.5;
+  }
+
+  50% {
+    transform: scale(1.4);
+    opacity: 0.9;
+  }
+}
+
+/* Modal 從燈泡展開的動畫 */
+.modal.opening .modal-content {
+  animation: expandFromBulb 0.4s ease-out forwards;
+}
+
+@keyframes expandFromBulb {
+  0% {
+    transform: scale(0.1) translateX(150%) translateY(150%);
+    opacity: 0;
+    border-radius: 50%;
+  }
+
+  100% {
+    transform: scale(1) translateX(0) translateY(0);
+    opacity: 1;
+    border-radius: 1rem;
+  }
+}
+
+/* 隱藏燈泡按鈕當 modal 開啟時 */
+.bulb-btn.hidden {
+  opacity: 0;
+  pointer-events: none;
+  transform: scale(0);
+}
+
+/* 客服按鈕：左下角浮動 */
+.customer-service {
+  position: fixed;
+  left: 20px;
+  bottom: 80px;
+  width: 50px;
+  height: 50px;
+  cursor: pointer;
+  border-radius: 50%;
+  transition: all 0.3s ease;
+  flex-shrink: 0;
+  z-index: 100;
+  box-shadow:
+    0 0 12px rgba(255, 255, 255, 0.4),
+    0 0 24px rgba(78, 198, 202, 0.3),
+    0 0 36px rgba(67, 56, 159, 0.2);
+  animation: glow-pulse 2s ease-in-out infinite alternate;
+}
+
+.customer-service:hover {
+  transform: scale(1.1);
+  box-shadow:
+    0 0 18px rgba(255, 255, 255, 0.6),
+    0 0 36px rgba(78, 198, 202, 0.5),
+    0 0 54px rgba(67, 56, 159, 0.4);
+}
+
+.customer-service img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  border-radius: 50%;
+}
+
+/* 客服圖示光暈動畫 */
+@keyframes glow-pulse {
+  0% {
+    box-shadow:
+      0 0 10px rgba(255, 255, 255, 0.3),
+      0 0 20px rgba(78, 198, 202, 0.2),
+      0 0 30px rgba(67, 56, 159, 0.1);
+  }
+
+  100% {
+    box-shadow:
+      0 0 14px rgba(255, 255, 255, 0.5),
+      0 0 28px rgba(78, 198, 202, 0.4),
+      0 0 42px rgba(67, 56, 159, 0.3);
+  }
+}
+
+
+
+
+
+/* 主容器*/
+#app {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  padding: 0rem 2rem 8em 2rem;
+}
+
+
+header {
+  text-align: center;
+  margin-bottom: 1.5rem;
+}
+
 h1 {
-  font-size: 2.6rem;
+  font-size: 3.3rem;
   font-weight: 800;
   margin-bottom: 0.3rem;
 }
 
 p {
-  font-size: 1.2rem;
+  font-size: 1.3rem;
   color: #555;
   margin: 0.1rem;
 }
 
-/* 主選單按鈕田字排列 */
+/*  */
 .menu-grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 1rem;
-  padding: 1.5rem;
+  padding: 0.8rem 1.5rem;
   max-width: 1200px;
   margin: 0 auto;
 }
@@ -63,47 +228,46 @@ p {
   font-size: 1.3rem;
   font-weight: 600;
   padding: 1.6rem 0.6rem 1.6rem 0.5rem;
-  border: 0.13rem solid rgba(255,255,255,0.5);
+  border: 0.13rem solid rgba(255, 255, 255, 0.5);
   border-radius: 1rem;
   border-color: transparent;
-  box-shadow: 0 4px 8px rgba(0,0,0,0.15),   /* 底部陰影 */
-    0 0 0 1px rgba(255,255,255,0.08) inset; 
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15),
+    0 0 0 1px rgba(255, 255, 255, 0.08) inset;
   cursor: pointer;
   transition: transform 0.2s ease, box-shadow 0.2s ease;
-  backdrop-filter: blur(8px);     /* 玻璃霧化 */
+  backdrop-filter: blur(8px);
   -webkit-backdrop-filter: blur(8px);
-   margin: 0.7rem;
-   color: #ffffff;
-   letter-spacing:0.05rem;
+  margin: 0.7rem;
+  color: #ffffff;
+  letter-spacing: 0.05rem;
 }
 
 .menu-btn:hover {
   transform: translateY(-3px);
-  box-shadow: 0 6px 10px rgba(0,0,0,0.25);
+  box-shadow: 0 6px 10px rgba(0, 0, 0, 0.25);
 }
 
 .A {
-  background: linear-gradient(135deg, #4a6cf7, #6f8bff);
+  background: linear-gradient(135deg, #2851F6, #4193F2);
 }
 
 .B {
-  background: linear-gradient(135deg, #64d7ee, #2f8fd3);
+  background: linear-gradient(135deg, #64d7ee, #4193F2);
 }
 
 .C {
-  background: linear-gradient(135deg, #2f8fd3, #4bb8e8);
+  background: linear-gradient(135deg, #6156DC, #9063E5);
 }
 
 .D {
-  background: linear-gradient(135deg, #9367eb, #ac65bc);
+  background: linear-gradient(140deg, #9F63E3, #CC60DC);
 }
 
 
-/* Modal 視窗 */
 .modal {
   position: fixed;
   inset: 0;
-  background: rgba(0,0,0,0.45);
+  background: rgba(0, 0, 0, 0.45);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -142,9 +306,17 @@ p {
   font-size: 1rem;
 }
 
-.topic-1 { background: #fff7e0; }
-.topic-2 { background: #e7f8f5; }
-.topic-3 { background: #f0e7ff; }
+.topic-1 {
+  background: #fff7e0;
+}
+
+.topic-2 {
+  background: #e7f8f5;
+}
+
+.topic-3 {
+  background: #f0e7ff;
+}
 
 h2 {
   text-align: center;
@@ -158,20 +330,24 @@ h3 {
   margin-bottom: 0.3rem;
 }
 
-/* 調整彈出視窗內的 MathJax 公式大小 */
+mjx-container {
+  font-size: 1em !important;
+  line-height: 1.5;
+}
+
+/* 調整彈出視窗*/
 .modal-content mjx-container {
-  font-size: 1.1rem !important;    /* 放大整體公式，預設約等於文字大小 */
   line-height: 1.6;
 }
 
-/* 🔹 頂端整體區塊 */
+
 .ph-header {
   padding: 1.6rem 1rem 1rem;
   max-width: 1100px;
   margin: 0.5rem auto;
 }
 
-/* 🔹 上排：左邊返回、右邊分頁導覽 */
+
 .ph-header-top {
   display: flex;
   justify-content: space-between;
@@ -179,7 +355,7 @@ h3 {
   margin-bottom: 1.6rem;
 }
 
-/* 🔹 左側「回主頁」按鈕 */
+
 .back-link {
   text-decoration: none;
   color: #2b6cb0;
@@ -197,14 +373,14 @@ h3 {
   box-shadow: 0 3px 8px rgba(15, 23, 42, 0.2);
 }
 
-/* 🔹 右側導覽列容器 */
+
 .ph-header-right {
   display: flex;
-  gap: 0.4rem;
+  gap: 0.5rem;
   flex-wrap: wrap;
 }
 
-/* 🔹 個別導覽按鈕 */
+
 .ph-nav-item {
   text-decoration: none;
   font-size: 0.85rem;
@@ -223,14 +399,14 @@ h3 {
   box-shadow: 0 3px 7px rgba(15, 23, 42, 0.25);
 }
 
-/* 🔹 目前所在頁面 */
+
 .ph-nav-item--active {
   background: linear-gradient(135deg, #ffb347, #ffcc33);
   color: #222;
   box-shadow: 0 2px 6px rgba(245, 158, 11, 0.5);
 }
 
-/* 🔹 標題 & 副標 */
+
 .ph-title {
   font-size: 1.9rem;
   margin: 0.2rem 0 0.4rem;
@@ -245,28 +421,66 @@ h3 {
 }
 
 
-/* 下方半透明氛圍圖 */
+/* 下方*/
 .ambient-footer {
-  position: relative;
-  width: 100%;
-  height: 98%;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 95%;
+  height: 100vh;
   overflow: hidden;
-  margin-top: 2rem;
-  z-index: 0;
+  z-index: -1;
+  pointer-events: none;
 }
 
 .ambient-footer img {
   width: 100%;
+  height: 100%;
   object-fit: cover;
-  opacity: 0.35;        /* 半透明程度 */
-  filter: blur(1px);    /* 模糊柔化邊界，可拿掉 */
-  transform: scale(1.0); /* 稍微放大避免邊緣露出 */
+  opacity: 0.35;
+  filter: blur(1.5px);
+  transform: scale(1.05);
 }
 
-body::-webkit-scrollbar {
-  display: none; 
+
+
+/* ===================== */
+/* ===== Overrides ===== */
+/* ===================== */
+
+/* iPhone Safari 可視高度 & 底部安全區修正 */
+body {
+  height: 100dvh !important;
+  height: calc(100dvh - var(--safe-area-top) - var(--safe-area-bottom)) !important;
+  padding-bottom: 0 !important;
 }
-/* 🔹 簡單 RWD：窄螢幕換行顯示導覽列 */
+
+/* 客服 ICON：行動版放大 + 右側安全邊距 + 觸控熱區 */
+.header-content .customer-service {
+  width: clamp(56px, 12vw, 64px) !important;
+  height: clamp(56px, 12vw, 64px) !important;
+  margin-right: calc(env(safe-area-inset-right, 0px) + 16px);
+  padding: 4px;
+}
+
+/* LOGO 與 客服 ICON 間距（更寬鬆，含自適應）*/
+.header-content {
+  gap: clamp(1.5rem, 6vw, 3rem) !important;
+}
+
+/* 針對極窄螢幕再微調 */
+@media (max-width: 480px) {
+  .header-content .customer-service {
+    width: 56px !important;
+    height: 56px !important;
+  }
+
+  .content-area {
+    margin-bottom: clamp(14px, 2.5vh, 24px) !important;
+  }
+}
+
+
 @media (max-width: 768px) {
   .ph-header-top {
     flex-direction: column;
@@ -285,29 +499,61 @@ body::-webkit-scrollbar {
 }
 
 
-/* 手機版優化 */
+/*  */
 @media (max-width: 600px) {
+  #app {
+    min-height: auto;
+    justify-content: flex-start;
+    padding: 1rem;
+    padding-bottom: 100px;
+  }
+
   .menu-grid {
     grid-template-columns: repeat(1, 1fr);
     max-width: 450px;
     gap: 0.1rem;
   }
+
   .menu-btn {
-    font-size: 1.2rem !important; 
+    font-size: 1.2rem !important;
     font-weight: 700;
-    letter-spacing:0.15rem;
+    letter-spacing: 0.15rem;
   }
 
-  h1 { font-size: 1.8rem; }
-  .menu-btn { padding: 1.2rem; font-size: 1rem; }
-  .modal-content { width: 94%; }
+  h1 {
+    font-size: 1.8rem;
+  }
+
+  .menu-btn {
+    padding: 1.2rem;
+    font-size: 1rem;
+  }
+
+  .modal-content {
+    width: 94%;
+  }
+
   .modal-content mjx-container {
-    font-size: 1em; 
+    font-size: 1em;
   }
 
+  /* 手機版客服按鈕 */
+  .customer-service {
+    width: 40px;
+    height: 40px;
+    left: 12px;
+    bottom: 60px;
+  }
 }
 
 @keyframes fadeIn {
-  from { opacity: 0; transform: scale(0.9); }
-  to { opacity: 1; transform: scale(1); }
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
 }

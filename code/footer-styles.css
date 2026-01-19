@@ -1,0 +1,148 @@
+/* ========================================
+   統一頁腳樣式 (Universal Footer Styles)
+   ======================================== */
+
+/* --- 頁腳 (Footer) 預設深色模式 --- */
+footer {
+  width: 100%;
+  background-color: #05080a;
+  border-top: 1px solid #1f2937;
+  color: #d1d5db;
+  padding-top: 3rem;
+  padding-bottom: 3rem;
+  position: relative;
+  z-index: 10;
+  transition: background-color 0.3s ease, border-color 0.3s ease, color 0.3s ease;
+}
+
+/* 頁腳內的文字層級顏色 - 深色模式預設 */
+footer .text-gray-200 {
+  color: #e2e8f0;
+}
+
+footer .text-gray-400 {
+  color: #9ca3af;
+}
+
+footer .text-gray-500 {
+  color: #6b7280;
+}
+
+footer .text-white {
+  color: #ffffff;
+}
+
+footer .border-gray-800 {
+  border-color: #1f2937;
+}
+
+/* --- Logo 切換邏輯 --- */
+.footer-logo-light {
+  display: none;
+}
+
+.footer-logo-dark {
+  display: block;
+}
+
+/* ========================================
+   淺色模式覆寫 (Light Mode)
+   ======================================== */
+.light-mode footer {
+  background-color: #f8fafca4 !important;
+  border-top-color: #cbd5e1 !important;
+  color: #334155 !important;
+}
+
+.light-mode footer .text-gray-200 {
+  color: #1e293b !important;
+}
+
+.light-mode footer .text-gray-400 {
+  color: #475569 !important;
+}
+
+.light-mode footer .text-gray-500 {
+  color: #64748b !important;
+}
+
+.light-mode footer .text-white {
+  color: #0f172a !important;
+}
+
+.light-mode footer .border-gray-800 {
+  border-color: #cbd5e1be !important;
+}
+
+.light-mode .footer-logo-light {
+  display: block;
+}
+
+.light-mode .footer-logo-dark {
+  display: none;
+}
+
+/* 標題左邊裝飾條 - 用偽元素實現 */
+footer h4 {
+  display: flex;
+  align-items: center;
+  border-left: none !important;
+  padding-left: -2.5rem;
+}
+
+footer h4::before {
+  content: '';
+  display: inline-block;
+  width: 4px;
+  height: 1em;
+  background: #f472b6;
+  /* pink-400 */
+  border-radius: 2px;
+  margin-left: 2.5rem;
+  padding-left: 0.5rem;
+  flex-shrink: 0;
+}
+
+.light-mode footer h4::before {
+  background: #ec4899;
+  /* pink-500 */
+}
+
+/* ========================================
+   手機版面優化 (Mobile Optimization)
+   針對寬度小於 768px 的裝置調整
+   ======================================== */
+@media (max-width: 768px) {
+  footer {
+    padding-top: 1.5rem !important;
+    padding-bottom: 1.5rem !important;
+    text-align: left;
+  }
+
+  footer h4 {
+    margin-bottom: 0.5rem !important;
+    font-size: 1rem !important;
+  }
+
+  footer ul li {
+    margin-bottom: 0.25rem !important;
+  }
+
+  footer .text-xs,
+  footer .text-sm {
+    line-height: 1.4 !important;
+    font-size: 0.75rem !important;
+  }
+
+  footer .gap-8 {
+    gap: 1.5rem !important;
+  }
+
+  footer .gap-6 {
+    gap: 1rem !important;
+  }
+
+  footer .space-y-3> :not([hidden])~ :not([hidden]) {
+    margin-top: 0.5rem !important;
+  }
+}
